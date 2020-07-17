@@ -1,12 +1,6 @@
 ﻿using COMP_FISK.Controllers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COMP_FISK
@@ -15,11 +9,22 @@ namespace COMP_FISK
     {
 
         // Nadgledaj direktoriji
-        DbfFileWatcherController FileWatcher = new DbfFileWatcherController(@"C:\fiskcomp\exch\lnk\TO_FP");
+
 
         public MainWindowView()
         {
             InitializeComponent();
+            InicijalizacijaInformacija();
+        }
+
+        private async void InicijalizacijaInformacija()
+        {
+            List<string> printerInformacije = await FiskalniPrinterController.FiskalniPrinterInformacije();
+
+            lblFactoryIdVar.Text = printerInformacije[0].ToString();
+            lblTipPrinteraVar.Text = printerInformacije[1].ToString();
+            lblIBFMVar.Text = printerInformacije[2].ToString();
+            lblJIBVar.Text = printerInformacije[3].ToString();
         }
 
         private void closeBox_Click(object sender, EventArgs e)
@@ -31,6 +36,17 @@ namespace COMP_FISK
         {
             this.Hide();
             this.ShowInTaskbar = false;
+        }
+
+        private void prikaziProzorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            this.ShowInTaskbar = true;
+        }
+
+        private void grbInformacije_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

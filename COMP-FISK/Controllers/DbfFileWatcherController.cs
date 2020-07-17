@@ -1,11 +1,5 @@
-﻿using COMP_FISK.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace COMP_FISK.Controllers
 {
@@ -17,12 +11,7 @@ namespace COMP_FISK.Controllers
             dbfFileWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.CreationTime |
                                           NotifyFilters.FileName;
             dbfFileWatcher.Created += dbfWatcher_Created;
-            //dbfFileWatcher.EnableRaisingEvents = ToggleRisingEvents(dbfFileWatcher);
-        }
-
-        private bool ToggleRisingEvents(FileSystemWatcher dbfFileWatcher)
-        {
-            throw new NotImplementedException();
+            dbfFileWatcher.EnableRaisingEvents = true;
         }
 
         private void dbfWatcher_Created(object sender, FileSystemEventArgs e)
@@ -41,6 +30,7 @@ namespace COMP_FISK.Controllers
                     unlocked = WaitForFile(file);
                 }
             }
+
             // Za svaki racun pravimo novu instancu
             // Preuzimamo podatke, sortiramo ih
             // Onda saljemo sortirane podatke u objekat FiskalniRacun 

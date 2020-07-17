@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Controllers\DbfFileWatcherController.cs" />
     <Compile Include="Controllers\FiskalizacijaController.cs" />
+    <Compile Include="Controllers\FiskalniPrinterController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Models\FileWatcherRaisingEvents.cs" />
     <Compile Include="Models\FiskalniIzvjestajiModels.cs" />
@@ -94,6 +95,7 @@
     <Content Include="Icons\iconComp.png" />
     <Content Include="Icons\iconMinimize.png" />
     <Content Include="Icons\ikona.ico" />
+    <Content Include="TringDriver\Tring.Fiscal.Driver.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
