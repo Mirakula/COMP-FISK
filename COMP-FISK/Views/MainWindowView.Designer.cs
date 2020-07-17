@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ContextMenuStrip contextMenu;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowView));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prikaziProzorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provjeriStatusPrinteraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dnevniIzvještajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -297,14 +297,14 @@
             this.dgvRacuniDataView.AllowUserToResizeRows = false;
             this.dgvRacuniDataView.BackgroundColor = System.Drawing.Color.White;
             this.dgvRacuniDataView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRacuniDataView.ColumnHeadersHeight = 29;
             this.dgvRacuniDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRacuniDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -321,8 +321,8 @@
             this.dgvRacuniDataView.RowHeadersVisible = false;
             this.dgvRacuniDataView.RowHeadersWidth = 51;
             this.dgvRacuniDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRacuniDataView.RowTemplate.Height = 24;
             this.dgvRacuniDataView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvRacuniDataView.Size = new System.Drawing.Size(666, 369);
@@ -390,7 +390,7 @@
             // lblFactoryIdVar
             // 
             this.lblFactoryIdVar.AutoSize = true;
-            this.lblFactoryIdVar.Location = new System.Drawing.Point(192, 112);
+            this.lblFactoryIdVar.Location = new System.Drawing.Point(129, 112);
             this.lblFactoryIdVar.Name = "lblFactoryIdVar";
             this.lblFactoryIdVar.Size = new System.Drawing.Size(0, 18);
             this.lblFactoryIdVar.TabIndex = 7;
@@ -398,7 +398,7 @@
             // lblJIBVar
             // 
             this.lblJIBVar.AutoSize = true;
-            this.lblJIBVar.Location = new System.Drawing.Point(192, 143);
+            this.lblJIBVar.Location = new System.Drawing.Point(129, 143);
             this.lblJIBVar.Name = "lblJIBVar";
             this.lblJIBVar.Size = new System.Drawing.Size(0, 18);
             this.lblJIBVar.TabIndex = 8;
@@ -406,7 +406,7 @@
             // lblIBFMVar
             // 
             this.lblIBFMVar.AutoSize = true;
-            this.lblIBFMVar.Location = new System.Drawing.Point(192, 175);
+            this.lblIBFMVar.Location = new System.Drawing.Point(129, 175);
             this.lblIBFMVar.Name = "lblIBFMVar";
             this.lblIBFMVar.Size = new System.Drawing.Size(0, 18);
             this.lblIBFMVar.TabIndex = 9;

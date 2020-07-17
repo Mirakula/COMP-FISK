@@ -8,9 +8,6 @@ namespace COMP_FISK
     public partial class MainWindowView : Form
     {
 
-        // Nadgledaj direktoriji
-
-
         public MainWindowView()
         {
             InitializeComponent();
