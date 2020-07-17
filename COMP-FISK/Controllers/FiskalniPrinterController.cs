@@ -94,11 +94,5 @@ namespace COMP_FISK.Controllers
             else
                 return await Task.FromResult(false);
         }
-        
-        public static async Task<bool> DajFactoryId()
-        {
-            var fp = new TringFiskalniPrinter();
-            var odgovor = fp.Inicijalizacija
-        }
     }
 }
