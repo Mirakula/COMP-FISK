@@ -185,7 +185,7 @@ namespace COMP_FISK.Controllers
                         povrat = trenutniRed.artikal.Cijena * trenutniRed.Kolicina;
                     }
                 }
-
+                // TODO: naci broj fiskalnog racuna za reklamaciju.
                 _tringFiscal.UnosNovca(VrstePlacanja.Gotovina, povrat);
                 _odgovor = _tringFiscal.StampatiReklamiraniRacun(_racun);
             }

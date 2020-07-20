@@ -193,7 +193,6 @@
             this.grbInformacije.TabIndex = 4;
             this.grbInformacije.TabStop = false;
             this.grbInformacije.Text = "Informacije";
-            this.grbInformacije.Enter += new System.EventHandler(this.grbInformacije_Enter);
             // 
             // lblBrojIzvjestajaVar
             // 
