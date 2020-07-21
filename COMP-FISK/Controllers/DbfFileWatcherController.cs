@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Security.Cryptography;
 using System.Threading;
 
 namespace COMP_FISK.Controllers
@@ -14,7 +15,7 @@ namespace COMP_FISK.Controllers
             dbfFileWatcher.EnableRaisingEvents = true;
         }
 
-        private void dbfWatcher_Created(object sender, FileSystemEventArgs e)
+        private async void dbfWatcher_Created(object sender, FileSystemEventArgs e)
         {
             // Dobavi samo dbf fajlove iz TO_FP
             DirectoryInfo directory = new DirectoryInfo(@"C:\fiskcomp\exch\lnk\TO_FP");
@@ -37,9 +38,27 @@ namespace COMP_FISK.Controllers
             // Taj objekat saljemo na stampu
             foreach (FileInfo dbfRacun in fileInfo)
             {
-                var ControllerFiskalnihRacuna = new FiskalizacijaController();
+                var stampan = RacuniController.ProvjeriStampan(dbfRacun.Name);
+                if(stampan == null)
+                {
+                    var ControllerFiskalnihRacuna = new FiskalizacijaController();
+                    var brojRacuna = await ControllerFiskalnihRacuna.PreuzmiRasporediStampaj(dbfRacun.Name, dbfRacun.FullName);
+                    var rezultatFiskalizacije = char.IsNumber(brojRacuna[0]);
 
-                var brojRacuna = ControllerFiskalnihRacuna.PreuzmiRasporediStampaj(dbfRacun.Name, dbfRacun.FullName);
+                    if (rezultatFiskalizacije)
+                        RacuniController.UpisiOdgovorOK(brojRacuna, dbfRacun.Name);
+                    else
+                        RacuniController.UpisiOdgovorERR(brojRacuna, dbfRacun.Name);
+                }
+                else
+                {
+                    // Broj racuna je u stampan varijabli
+                    // Racun je vec stampan obavijest
+                    string putanjaFajla = dbfRacun.FullName;
+                    string destinacija = @"C:\fiskcomp\exch\lnk\comp\" + dbfRacun.Name;
+                    RacuniController.PremjestiDbf(putanjaFajla, destinacija);
+                    break;
+                }
             }
         }
 

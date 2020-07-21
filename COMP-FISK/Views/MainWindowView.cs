@@ -11,8 +11,8 @@ namespace COMP_FISK
         public MainWindowView()
         {
             InitializeComponent();
+            var resultKonekcijaFiskalni = ProvjeriStatusFiskalnogPrintera();
 
-            var resultKonekcijaFiskalni = Task.Run(async() => await ProvjeriStatusFiskalnogPrintera());
             if (!resultKonekcijaFiskalni.Result)
             {
                 // Poruka da fiskalni nije spojen.
@@ -20,7 +20,7 @@ namespace COMP_FISK
             else
             {
                 // Daj inforamcije iz fiskalnog
-                Task.Run(() => InicijalizacijaInformacija());
+                InicijalizacijaInformacija();
             }
         }
 
@@ -35,10 +35,11 @@ namespace COMP_FISK
         {
             List<string> printerInformacije = await FiskalniPrinterController.FiskalniPrinterInformacije();
 
-            lblFactoryIdVar.Text = (printerInformacije[0].ToString() == " ") ? "0" : "0";
+            lblFactoryIdVar.Text = printerInformacije[0].ToString();
             lblTipPrinteraVar.Text = printerInformacije[1].ToString();
             lblIBFMVar.Text = printerInformacije[2].ToString();
             lblJIBVar.Text = printerInformacije[3].ToString();
+            lblBrojIzvjestajaVar.Text = printerInformacije[4].ToString();
         }
 
         private void closeBox_Click(object sender, EventArgs e)

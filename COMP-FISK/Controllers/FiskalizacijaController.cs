@@ -20,6 +20,7 @@ namespace COMP_FISK.Controllers
         DataTable _dataTable = new DataTable();
         bool _fiskalni = false;
         bool _reklamni = false;
+        string _brojReklamacijaDuplikacija;
 
         /// <summary>
         /// Metoda dobije 2 parametra. Naziv fajla i putanja fajla.
@@ -32,7 +33,8 @@ namespace COMP_FISK.Controllers
         /// <returns></returns>
         public async Task<string> PreuzmiRasporediStampaj(string nazivFajla, string putanjaFajla)
         {
-            OdbcConnection _connection = new OdbcConnection("Driver={Microsoft Visual FoxPro Driver};SourceType=DBF;Exclusive=No;Collate=Machine;NULL=NO;DELETED=YES;BACKGROUNDFETCH=NO;SourceDB=" + putanjaFajla + ";");
+
+             OdbcConnection _connection = new OdbcConnection("Driver={Microsoft Visual FoxPro Driver};SourceType=DBF;Exclusive=No;Collate=Machine;NULL=NO;DELETED=YES;BACKGROUNDFETCH=NO;SourceDB=" + putanjaFajla + ";");
             _adapter.SelectCommand = new OdbcCommand("SELECT * FROM " + putanjaFajla, _connection);
             _connection.Open();
             _adapter.Fill(_dataTable);
@@ -81,6 +83,7 @@ namespace COMP_FISK.Controllers
             else if (_vrstaRacuna == '3')
             {
                 _reklamni = true;
+                _brojReklamacijaDuplikacija = BrojRacunaReklamacijaDuplikacija(data[0].Art_desc.ToString());
             }
 
             List<RedDbfModel>.Enumerator enumeracijaArtikliStavke;
@@ -124,29 +127,32 @@ namespace COMP_FISK.Controllers
                 }
             }
 
-            List<RedDbfModel>.Enumerator enumeratorPlacanje;
-            using (enumeratorPlacanje = podaciPlacanje.GetEnumerator())
+            if (!_reklamni)
             {
-                enumeratorPlacanje.MoveNext();
+                List<RedDbfModel>.Enumerator enumeratorPlacanje;
+                using (enumeratorPlacanje = podaciPlacanje.GetEnumerator())
+                {
+                    enumeratorPlacanje.MoveNext();
 
-                RedDbfModel trenutniRed = enumeratorPlacanje.Current;
+                    RedDbfModel trenutniRed = enumeratorPlacanje.Current;
 
-                if (trenutniRed.Art_desc == "Gotovina" && trenutniRed.Art_price != 0.0)
-                    _racun.DodajVrstuPlacanja(VrstePlacanja.Gotovina, trenutniRed.Art_price);
+                    if (trenutniRed.Art_desc == "Gotovina" && trenutniRed.Art_price != 0.0)
+                        _racun.DodajVrstuPlacanja(VrstePlacanja.Gotovina, trenutniRed.Art_price);
 
-                if (trenutniRed.Art_desc == "Virman" && trenutniRed.Art_price != 0.0)
-                    _racun.DodajVrstuPlacanja(VrstePlacanja.Virman, trenutniRed.Art_price);
+                    if (trenutniRed.Art_desc == "Virman" && trenutniRed.Art_price != 0.0)
+                        _racun.DodajVrstuPlacanja(VrstePlacanja.Virman, trenutniRed.Art_price);
 
-                if (trenutniRed.Art_desc == "Cek" && trenutniRed.Art_price != 0.0)
-                    _racun.DodajVrstuPlacanja(VrstePlacanja.Cek, trenutniRed.Art_price);
+                    if (trenutniRed.Art_desc == "Cek" && trenutniRed.Art_price != 0.0)
+                        _racun.DodajVrstuPlacanja(VrstePlacanja.Cek, trenutniRed.Art_price);
 
-                if (trenutniRed.Art_desc == "Kartica" && trenutniRed.Art_price != 0.0)
-                    _racun.DodajVrstuPlacanja(VrstePlacanja.Kartica, trenutniRed.Art_price);
+                    if (trenutniRed.Art_desc == "Kartica" && trenutniRed.Art_price != 0.0)
+                        _racun.DodajVrstuPlacanja(VrstePlacanja.Kartica, trenutniRed.Art_price);
+                }
             }
 
             if (podaciKupac[0].Art_desc.Length != 13 && podaciKupac[1].Art_desc.Length == 0 && podaciKupac[2].Art_desc.Length == 0 && podaciKupac[3].Art_desc.Length != 5 && podaciKupac[4].Art_desc.Length == 0)
             {
-                // podaci o kupcu nisu ispravni
+                // podaci o kupcu nisu ispravni poruka
             }
             else
             {
@@ -174,10 +180,11 @@ namespace COMP_FISK.Controllers
                 double povrat = 0.0d;
                 using (List<RacunStavka>.Enumerator enumeratorStavkeRacuna = _racun.StavkeRacuna.GetEnumerator())
                 {
-                    bool prekid = enumeratorStavkeRacuna.MoveNext();
 
                     while (true)
                     {
+                        bool prekid = enumeratorStavkeRacuna.MoveNext();
+
                         if (!prekid)
                             break;
 
@@ -191,11 +198,10 @@ namespace COMP_FISK.Controllers
             }
             else
             {
-                _odgovor = _tringFiscal.StampatiDuplikatFiskalnogRacuna(11d);
+                _odgovor = _tringFiscal.StampatiDuplikatFiskalnogRacuna(Convert.ToDouble(_brojReklamacijaDuplikacija));
             }
 
             string rezultatFiskalizacije = Odgovor(_odgovor);
-
             return await Task.FromResult(rezultatFiskalizacije);
         }
 
@@ -232,11 +238,8 @@ namespace COMP_FISK.Controllers
 
             else if (kasaOdgovor.VrstaOdgovora == VrsteOdgovora.Greska)
             {
-                for (int i = 0; i < kasaOdgovor.Odgovori.Count; i++)
-                {
-                    if (kasaOdgovor.Odgovori[i].Naziv == "Greska")
-                        return kasaOdgovor.Odgovori[i].Vrijednost.ToString();
-                }
+                var odgovorGreske = kasaOdgovor.Odgovori[0].Naziv.ToString() + "\n" + kasaOdgovor.Odgovori[0].Vrijednost.ToString();
+                return odgovorGreske;
             }
             else
             {
@@ -249,27 +252,9 @@ namespace COMP_FISK.Controllers
             return null;
         }
 
-
-        /// <summary>
-        /// Premjesti DBF fajl nakon sto je obradjen
-        /// </summary>
-        /// <param name="nazivFajla"></param>
-        /// <param name="putanjaFajla"></param>
-        /// <returns></returns>
-        public bool PremjestiDbfFajl(string nazivFajla, string putanjaFajla)
+        private string BrojRacunaReklamacijaDuplikacija(string broj)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Metoda koja provjerava da li je fiskalni
-        /// racun vec stampan.
-        /// </summary>
-        /// <param name="fajlPutanja"></param>
-        /// <returns></returns>
-        public bool ProvjeriStampan(string fajlPutanja)
-        {
-            throw new NotImplementedException();
+            return broj.Split(new char[] { '-' })[1];
         }
     }
 }

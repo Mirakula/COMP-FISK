@@ -27,7 +27,7 @@ namespace COMP_FISK.Controllers
 
             if (odgovor.VrstaOdgovora == VrsteOdgovora.OK)
             {
-                for (int i = 0; i < odgovor.Odgovori.Count; i++)
+                for (int i = 0; i < odgovor.Odgovori.Count - 3; i++)
                 {
                     if (odgovor.Odgovori[i].Naziv == "FactoryId")
                         resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
@@ -39,6 +39,9 @@ namespace COMP_FISK.Controllers
                         resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
 
                     if (odgovor.Odgovori[i].Naziv == "JIB")
+                        resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
+
+                    if (odgovor.Odgovori[i].Naziv == "NumberOfDailyReports")
                         resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
                 }
             }
