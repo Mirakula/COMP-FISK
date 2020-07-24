@@ -67,13 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ControlExtensions.cs" />
     <Compile Include="Controllers\DbfFileWatcherController.cs" />
     <Compile Include="Controllers\FiskalizacijaController.cs" />
     <Compile Include="Controllers\FiskalniPrinterController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Controllers\RacuniController.cs" />
-    <Compile Include="Models\BrojRacunaModel.cs" />
     <Compile Include="Models\FiskalniIzvjestajiModels.cs" />
     <Compile Include="Models\RedDbfModel.cs" />
     <Compile Include="Views\MainWindowView.cs">

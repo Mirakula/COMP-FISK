@@ -51,8 +51,6 @@ namespace COMP_FISK.Controllers
                     var brojRacuna = await ControllerFiskalnihRacuna.PreuzmiRasporediStampaj(dbfRacun.Name, dbfRacun.FullName);
                     var rezultatFiskalizacije = char.IsNumber(brojRacuna[0]);
 
-                    BrojRacunaModel.brojRacuna = brojRacuna;
-
                     if (rezultatFiskalizacije)
                     {
                         RacuniController.UpisiOdgovorOK(brojRacuna, dbfRacun.Name);
