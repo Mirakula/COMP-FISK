@@ -165,7 +165,7 @@ namespace COMP_FISK.Controllers
                 }
                 catch
                 {
-                    _kupac.PostanskiBroj = 0;
+                    _kupac.PostanskiBroj = 0; 
                 }
                 _kupac.Grad = podaciKupac[4].Art_desc;
 
@@ -241,13 +241,17 @@ namespace COMP_FISK.Controllers
                 var odgovorGreske = kasaOdgovor.Odgovori[0].Naziv.ToString() + "\n" + kasaOdgovor.Odgovori[0].Vrijednost.ToString();
                 return odgovorGreske;
             }
-            else
+            else if (kasaOdgovor.VrstaOdgovora == VrsteOdgovora.Upozorenje)
             {
                 for (int i = 0; i < kasaOdgovor.Odgovori.Count; i++)
                 {
                     if (kasaOdgovor.Odgovori[i].Naziv == "Upozorenje")
                         return kasaOdgovor.Odgovori[i].Vrijednost.ToString();
                 }
+            }
+            else
+            {
+                return null;
             }
             return null;
         }

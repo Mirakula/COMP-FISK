@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace COMP_FISK.Models
 {
-    public static class FileWatcherRaisingEvents
+    public static class BrojRacunaModel
     {
-        public static bool EnableRisingEvents { get; set; }
+        public static string brojRacuna { get; set; }
     }
 }

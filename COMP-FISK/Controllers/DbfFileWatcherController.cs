@@ -1,6 +1,12 @@
-﻿using System.IO;
+﻿using COMP_FISK.Models;
+using COMP_FISK.Properties;
+using System.Drawing;
+using System.IO;
 using System.Security.Cryptography;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Tulpep.NotificationWindow;
 
 namespace COMP_FISK.Controllers
 {
@@ -45,15 +51,17 @@ namespace COMP_FISK.Controllers
                     var brojRacuna = await ControllerFiskalnihRacuna.PreuzmiRasporediStampaj(dbfRacun.Name, dbfRacun.FullName);
                     var rezultatFiskalizacije = char.IsNumber(brojRacuna[0]);
 
+                    BrojRacunaModel.brojRacuna = brojRacuna;
+
                     if (rezultatFiskalizacije)
+                    {
                         RacuniController.UpisiOdgovorOK(brojRacuna, dbfRacun.Name);
+                    }
                     else
                         RacuniController.UpisiOdgovorERR(brojRacuna, dbfRacun.Name);
                 }
                 else
                 {
-                    // Broj racuna je u stampan varijabli
-                    // Racun je vec stampan obavijest
                     string putanjaFajla = dbfRacun.FullName;
                     string destinacija = @"C:\fiskcomp\exch\lnk\comp\" + dbfRacun.Name;
                     RacuniController.PremjestiDbf(putanjaFajla, destinacija);
@@ -88,5 +96,6 @@ namespace COMP_FISK.Controllers
             }
             return FileReady;
         }
+
     }
 }

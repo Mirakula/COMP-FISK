@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -21,7 +22,8 @@ namespace COMP_FISK
                 return;
 
             // Kreira sve potrebne direktorije
-            FolderController.KreirajDirektorije();
+            if (!Directory.Exists(@"C:\fiskcomp"))
+                FolderController.KreirajDirektorije();
 
             // Dodaj ovo u registry za auto startup aplikacije
             RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);

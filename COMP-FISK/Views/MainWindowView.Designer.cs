@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ContextMenuStrip contextMenu;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowView));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prikaziProzorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provjeriStatusPrinteraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dnevniIzvještajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +63,14 @@
             this.colBrjFisk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVrijeme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnFiskalniNijeSpojen = new Tulpep.NotificationWindow.PopupNotifier();
+            this.pnFiskalniSpojen = new Tulpep.NotificationWindow.PopupNotifier();
+            this.pnFiskalniOK = new Tulpep.NotificationWindow.PopupNotifier();
+            this.pnFiskalniERR = new Tulpep.NotificationWindow.PopupNotifier();
+            this.pnGreskaKomunikacija = new Tulpep.NotificationWindow.PopupNotifier();
+            this.pnDnevniIzvjestaj = new Tulpep.NotificationWindow.PopupNotifier();
+            this.pnPresjekStanja = new Tulpep.NotificationWindow.PopupNotifier();
+            this.pnServisPozadina = new Tulpep.NotificationWindow.PopupNotifier();
             contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             contextMenu.SuspendLayout();
             this.leftPnl.SuspendLayout();
@@ -106,6 +114,7 @@
             this.provjeriStatusPrinteraToolStripMenuItem.Name = "provjeriStatusPrinteraToolStripMenuItem";
             this.provjeriStatusPrinteraToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.provjeriStatusPrinteraToolStripMenuItem.Text = "Provjeri status printera";
+            this.provjeriStatusPrinteraToolStripMenuItem.Click += new System.EventHandler(this.provjeriStatusPrinteraToolStripMenuItem_Click);
             // 
             // dnevniIzvještajToolStripMenuItem
             // 
@@ -114,6 +123,7 @@
             this.dnevniIzvještajToolStripMenuItem.Name = "dnevniIzvještajToolStripMenuItem";
             this.dnevniIzvještajToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.dnevniIzvještajToolStripMenuItem.Text = "Dnevni izvještaj";
+            this.dnevniIzvještajToolStripMenuItem.Click += new System.EventHandler(this.dnevniIzvještajToolStripMenuItem_Click);
             // 
             // periodičniIzvještajToolStripMenuItem
             // 
@@ -122,6 +132,7 @@
             this.periodičniIzvještajToolStripMenuItem.Name = "periodičniIzvještajToolStripMenuItem";
             this.periodičniIzvještajToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.periodičniIzvještajToolStripMenuItem.Text = "Periodični izvještaj";
+            this.periodičniIzvještajToolStripMenuItem.Click += new System.EventHandler(this.periodičniIzvještajToolStripMenuItem_Click);
             // 
             // presjekStanjaToolStripMenuItem
             // 
@@ -130,6 +141,7 @@
             this.presjekStanjaToolStripMenuItem.Name = "presjekStanjaToolStripMenuItem";
             this.presjekStanjaToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.presjekStanjaToolStripMenuItem.Text = "Presjek stanja";
+            this.presjekStanjaToolStripMenuItem.Click += new System.EventHandler(this.presjekStanjaToolStripMenuItem_Click);
             // 
             // restartTringServeraToolStripMenuItem
             // 
@@ -348,14 +360,14 @@
             this.dgvRacuniDataView.AllowUserToResizeRows = false;
             this.dgvRacuniDataView.BackgroundColor = System.Drawing.Color.White;
             this.dgvRacuniDataView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvRacuniDataView.ColumnHeadersHeight = 29;
             this.dgvRacuniDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRacuniDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -373,8 +385,8 @@
             this.dgvRacuniDataView.RowHeadersVisible = false;
             this.dgvRacuniDataView.RowHeadersWidth = 51;
             this.dgvRacuniDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvRacuniDataView.RowTemplate.Height = 24;
             this.dgvRacuniDataView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvRacuniDataView.Size = new System.Drawing.Size(500, 300);
@@ -411,6 +423,183 @@
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             this.colStatus.Width = 125;
+            // 
+            // pnFiskalniNijeSpojen
+            // 
+            this.pnFiskalniNijeSpojen.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnFiskalniNijeSpojen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniNijeSpojen.ContentColor = System.Drawing.Color.White;
+            this.pnFiskalniNijeSpojen.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnFiskalniNijeSpojen.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnFiskalniNijeSpojen.ContentPadding = new System.Windows.Forms.Padding(30, 5, 0, 0);
+            this.pnFiskalniNijeSpojen.ContentText = "Komunikacija sa fiskalnim uređajem nije uspostavljena. Provjerite da li je fiskal" +
+    "ni uređaj spojen na računar.";
+            this.pnFiskalniNijeSpojen.Delay = 5000;
+            this.pnFiskalniNijeSpojen.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniNijeSpojen.Image = ((System.Drawing.Image)(resources.GetObject("pnFiskalniNijeSpojen.Image")));
+            this.pnFiskalniNijeSpojen.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnFiskalniNijeSpojen.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnFiskalniNijeSpojen.IsRightToLeft = false;
+            this.pnFiskalniNijeSpojen.OptionsMenu = null;
+            this.pnFiskalniNijeSpojen.ShowGrip = false;
+            this.pnFiskalniNijeSpojen.Size = new System.Drawing.Size(350, 100);
+            this.pnFiskalniNijeSpojen.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniNijeSpojen.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnFiskalniNijeSpojen.TitleText = "";
+            // 
+            // pnFiskalniSpojen
+            // 
+            this.pnFiskalniSpojen.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnFiskalniSpojen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniSpojen.ContentColor = System.Drawing.Color.White;
+            this.pnFiskalniSpojen.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnFiskalniSpojen.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnFiskalniSpojen.ContentPadding = new System.Windows.Forms.Padding(35, 10, 0, 0);
+            this.pnFiskalniSpojen.ContentText = "Komunikacija uspostavljena ! Fiskalizacija inicijalizovana !";
+            this.pnFiskalniSpojen.Delay = 4000;
+            this.pnFiskalniSpojen.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniSpojen.Image = ((System.Drawing.Image)(resources.GetObject("pnFiskalniSpojen.Image")));
+            this.pnFiskalniSpojen.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnFiskalniSpojen.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnFiskalniSpojen.IsRightToLeft = false;
+            this.pnFiskalniSpojen.OptionsMenu = null;
+            this.pnFiskalniSpojen.ShowGrip = false;
+            this.pnFiskalniSpojen.Size = new System.Drawing.Size(350, 100);
+            this.pnFiskalniSpojen.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniSpojen.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnFiskalniSpojen.TitleText = "";
+            // 
+            // pnFiskalniOK
+            // 
+            this.pnFiskalniOK.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnFiskalniOK.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniOK.ContentColor = System.Drawing.Color.White;
+            this.pnFiskalniOK.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnFiskalniOK.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnFiskalniOK.ContentPadding = new System.Windows.Forms.Padding(25, 20, 0, 0);
+            this.pnFiskalniOK.ContentText = "";
+            this.pnFiskalniOK.Delay = 5000;
+            this.pnFiskalniOK.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniOK.Image = global::COMP_FISK.Properties.Resources.iconOK;
+            this.pnFiskalniOK.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnFiskalniOK.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnFiskalniOK.IsRightToLeft = false;
+            this.pnFiskalniOK.OptionsMenu = null;
+            this.pnFiskalniOK.ShowGrip = false;
+            this.pnFiskalniOK.Size = new System.Drawing.Size(250, 100);
+            this.pnFiskalniOK.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniOK.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnFiskalniOK.TitleText = "";
+            // 
+            // pnFiskalniERR
+            // 
+            this.pnFiskalniERR.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnFiskalniERR.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniERR.ContentColor = System.Drawing.Color.White;
+            this.pnFiskalniERR.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnFiskalniERR.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnFiskalniERR.ContentPadding = new System.Windows.Forms.Padding(25, 20, 0, 0);
+            this.pnFiskalniERR.ContentText = "";
+            this.pnFiskalniERR.Delay = 5000;
+            this.pnFiskalniERR.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniERR.Image = global::COMP_FISK.Properties.Resources.iconERR;
+            this.pnFiskalniERR.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnFiskalniERR.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnFiskalniERR.IsRightToLeft = false;
+            this.pnFiskalniERR.OptionsMenu = null;
+            this.pnFiskalniERR.ShowGrip = false;
+            this.pnFiskalniERR.Size = new System.Drawing.Size(250, 100);
+            this.pnFiskalniERR.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnFiskalniERR.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnFiskalniERR.TitleText = "";
+            // 
+            // pnGreskaKomunikacija
+            // 
+            this.pnGreskaKomunikacija.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnGreskaKomunikacija.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnGreskaKomunikacija.ContentColor = System.Drawing.Color.White;
+            this.pnGreskaKomunikacija.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnGreskaKomunikacija.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnGreskaKomunikacija.ContentPadding = new System.Windows.Forms.Padding(35, 10, 0, 0);
+            this.pnGreskaKomunikacija.ContentText = "Greška u komunikaciji sa fiskalnim printerom !";
+            this.pnGreskaKomunikacija.Delay = 5000;
+            this.pnGreskaKomunikacija.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnGreskaKomunikacija.Image = global::COMP_FISK.Properties.Resources.iconERR;
+            this.pnGreskaKomunikacija.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnGreskaKomunikacija.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnGreskaKomunikacija.IsRightToLeft = false;
+            this.pnGreskaKomunikacija.OptionsMenu = null;
+            this.pnGreskaKomunikacija.ShowGrip = false;
+            this.pnGreskaKomunikacija.Size = new System.Drawing.Size(350, 100);
+            this.pnGreskaKomunikacija.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnGreskaKomunikacija.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnGreskaKomunikacija.TitleText = "";
+            // 
+            // pnDnevniIzvjestaj
+            // 
+            this.pnDnevniIzvjestaj.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnDnevniIzvjestaj.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnDnevniIzvjestaj.ContentColor = System.Drawing.Color.White;
+            this.pnDnevniIzvjestaj.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnDnevniIzvjestaj.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnDnevniIzvjestaj.ContentPadding = new System.Windows.Forms.Padding(35, 20, 0, 0);
+            this.pnDnevniIzvjestaj.ContentText = "Dnevni izvještaj isprintan !";
+            this.pnDnevniIzvjestaj.Delay = 4000;
+            this.pnDnevniIzvjestaj.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnDnevniIzvjestaj.Image = global::COMP_FISK.Properties.Resources.iconOK;
+            this.pnDnevniIzvjestaj.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnDnevniIzvjestaj.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnDnevniIzvjestaj.IsRightToLeft = false;
+            this.pnDnevniIzvjestaj.OptionsMenu = null;
+            this.pnDnevniIzvjestaj.ShowGrip = false;
+            this.pnDnevniIzvjestaj.Size = new System.Drawing.Size(300, 100);
+            this.pnDnevniIzvjestaj.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnDnevniIzvjestaj.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnDnevniIzvjestaj.TitleText = "";
+            // 
+            // pnPresjekStanja
+            // 
+            this.pnPresjekStanja.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnPresjekStanja.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnPresjekStanja.ContentColor = System.Drawing.Color.White;
+            this.pnPresjekStanja.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnPresjekStanja.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnPresjekStanja.ContentPadding = new System.Windows.Forms.Padding(35, 20, 0, 0);
+            this.pnPresjekStanja.ContentText = "Presjek stanja isprintan !";
+            this.pnPresjekStanja.Delay = 4000;
+            this.pnPresjekStanja.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnPresjekStanja.Image = global::COMP_FISK.Properties.Resources.iconOK;
+            this.pnPresjekStanja.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnPresjekStanja.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnPresjekStanja.IsRightToLeft = false;
+            this.pnPresjekStanja.OptionsMenu = null;
+            this.pnPresjekStanja.ShowGrip = false;
+            this.pnPresjekStanja.Size = new System.Drawing.Size(300, 100);
+            this.pnPresjekStanja.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnPresjekStanja.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnPresjekStanja.TitleText = "";
+            // 
+            // pnServisPozadina
+            // 
+            this.pnServisPozadina.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnServisPozadina.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnServisPozadina.ContentColor = System.Drawing.Color.White;
+            this.pnServisPozadina.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnServisPozadina.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnServisPozadina.ContentPadding = new System.Windows.Forms.Padding(35, 20, 0, 0);
+            this.pnServisPozadina.ContentText = "Servis radi u pozadini.";
+            this.pnServisPozadina.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnServisPozadina.Image = global::COMP_FISK.Properties.Resources.iconComp;
+            this.pnServisPozadina.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnServisPozadina.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnServisPozadina.IsRightToLeft = false;
+            this.pnServisPozadina.OptionsMenu = null;
+            this.pnServisPozadina.Scroll = false;
+            this.pnServisPozadina.ShowGrip = false;
+            this.pnServisPozadina.Size = new System.Drawing.Size(300, 100);
+            this.pnServisPozadina.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnServisPozadina.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnServisPozadina.TitleText = "";
             // 
             // MainWindowView
             // 
@@ -472,6 +661,14 @@
         private System.Windows.Forms.Label lblJIB;
         private System.Windows.Forms.Label lblJIBVar;
         private System.Windows.Forms.Label lblIBFMVar;
+        private Tulpep.NotificationWindow.PopupNotifier pnFiskalniNijeSpojen;
+        private Tulpep.NotificationWindow.PopupNotifier pnFiskalniSpojen;
+        private Tulpep.NotificationWindow.PopupNotifier pnFiskalniOK;
+        private Tulpep.NotificationWindow.PopupNotifier pnFiskalniERR;
+        private Tulpep.NotificationWindow.PopupNotifier pnGreskaKomunikacija;
+        private Tulpep.NotificationWindow.PopupNotifier pnDnevniIzvjestaj;
+        private Tulpep.NotificationWindow.PopupNotifier pnPresjekStanja;
+        private Tulpep.NotificationWindow.PopupNotifier pnServisPozadina;
     }
 }
 
