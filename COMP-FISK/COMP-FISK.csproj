@@ -69,10 +69,13 @@
   <ItemGroup>
     <Compile Include="Controllers\DbfFileWatcherController.cs" />
     <Compile Include="Controllers\FiskalizacijaController.cs" />
+    <Compile Include="Controllers\FiskalniDataGridViewController.cs" />
     <Compile Include="Controllers\FiskalniPrinterController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Controllers\RacuniController.cs" />
+    <Compile Include="Controllers\RestartTringServerController.cs" />
     <Compile Include="Models\FiskalniIzvjestajiModels.cs" />
+    <Compile Include="Models\FolderItemsModel.cs" />
     <Compile Include="Models\RedDbfModel.cs" />
     <Compile Include="Views\MainWindowView.cs">
       <SubType>Form</SubType>

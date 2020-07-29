@@ -73,14 +73,12 @@ namespace COMP_FISK.Controllers
         // Slucaj za stampanje preko mreze.
         private bool WaitForFile(FileInfo fullFajlPath)
         {
-
-            FileStream stream = null;
             bool FileReady = false;
             while (!FileReady)
             {
                 try
                 {
-                    using (stream = fullFajlPath.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None))
+                    using (FileStream stream = fullFajlPath.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None))
                     {
                         FileReady = true;
                     }
@@ -94,6 +92,5 @@ namespace COMP_FISK.Controllers
             }
             return FileReady;
         }
-
     }
 }

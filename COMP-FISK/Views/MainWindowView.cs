@@ -1,7 +1,11 @@
 ﻿using COMP_FISK.Controllers;
+using COMP_FISK.Models;
 using COMP_FISK.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,26 +15,6 @@ namespace COMP_FISK
 {
     public partial class MainWindowView : Form
     {
-        #region Ovaj kod sluzi za pomjeranje prozora
-        // Ovaj dio koda omogucava da se forma moza pomjeriti kada se drzi desni klik na comp ikonu
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-        // Ovaj dio koda omogucava da se forma moza pomjeriti kada se drzi desni klik na comp ikonu
-        private new void Move(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-        #endregion
-
         public MainWindowView()
         {
             InitializeComponent();
@@ -61,6 +45,18 @@ namespace COMP_FISK
                 InicijalizacijaInformacija();
                 pnFiskalniSpojen.Popup();
             }
+            DajPodatkeORacunima();
+        }
+
+        private void DajPodatkeORacunima()
+        {
+            var stampaniPodaci = new FiskalniDataGridViewController();
+            var podaci = stampaniPodaci.DajSvePodatke(@"C:\fiskcomp\exch\lnk\FROM_FP");
+            var source = new BindingSource(podaci, null);
+            dgvRacuniDataView.DataSource = source;
+            dgvRacuniDataView.RowTemplate.Height = 35;
+            dgvRacuniDataView.DefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
+            dgvRacuniDataView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private void SystemWatcherFROM_FPerr_Created(object sender, FileSystemEventArgs e)
@@ -73,7 +69,6 @@ namespace COMP_FISK
             {
                 unlocked = WaitForFile(e.FullPath);
             }
-
             pnFiskalniERR.ContentText = "Greška: " + value;
             pnFiskalniERR.Popup();
         }
@@ -143,12 +138,14 @@ namespace COMP_FISK
             pnServisPozadina.Popup();
             this.Hide();
             this.ShowInTaskbar = false;
+            DajPodatkeORacunima();
         }
 
         private void prikaziProzorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Show();
             this.ShowInTaskbar = true;
+            DajPodatkeORacunima();
         }
 
         private async void provjeriStatusPrinteraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -182,6 +179,13 @@ namespace COMP_FISK
         {
             var noviPeriodicniIzvjestajProzor = new PeriodicniWindowView();
             noviPeriodicniIzvjestajProzor.Show();
+        }
+
+        private async void restartTringServeraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            await RestartTringServerController.RestartServisa();
+
+            pnRestartTringServisa.Popup();
         }
     }
 }
