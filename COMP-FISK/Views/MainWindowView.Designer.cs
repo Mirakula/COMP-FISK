@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ContextMenuStrip contextMenu;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowView));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prikaziProzorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provjeriStatusPrinteraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dnevniIzvještajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +68,7 @@
             this.pnServisPozadina = new Tulpep.NotificationWindow.PopupNotifier();
             this.dgvRacuniDataView = new System.Windows.Forms.DataGridView();
             this.pnRestartTringServisa = new Tulpep.NotificationWindow.PopupNotifier();
+            this.pnDnevniIzvjestaji = new Tulpep.NotificationWindow.PopupNotifier();
             contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             contextMenu.SuspendLayout();
             this.leftPnl.SuspendLayout();
@@ -536,14 +537,14 @@
             this.dgvRacuniDataView.BackgroundColor = System.Drawing.Color.White;
             this.dgvRacuniDataView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRacuniDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRacuniDataView.ColumnHeadersHeight = 29;
             this.dgvRacuniDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRacuniDataView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -556,8 +557,8 @@
             this.dgvRacuniDataView.RowHeadersVisible = false;
             this.dgvRacuniDataView.RowHeadersWidth = 51;
             this.dgvRacuniDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRacuniDataView.RowTemplate.Height = 24;
             this.dgvRacuniDataView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvRacuniDataView.Size = new System.Drawing.Size(325, 300);
@@ -584,6 +585,28 @@
             this.pnRestartTringServisa.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.pnRestartTringServisa.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
             this.pnRestartTringServisa.TitleText = "";
+            // 
+            // pnDnevniIzvjestaji
+            // 
+            this.pnDnevniIzvjestaji.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.pnDnevniIzvjestaji.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnDnevniIzvjestaji.ContentColor = System.Drawing.Color.White;
+            this.pnDnevniIzvjestaji.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnDnevniIzvjestaji.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnDnevniIzvjestaji.ContentPadding = new System.Windows.Forms.Padding(35, 10, 0, 0);
+            this.pnDnevniIzvjestaji.ContentText = "Uređaj je potrebno servisirati. Broj dnevnih izvještaja je došao do limita !";
+            this.pnDnevniIzvjestaji.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnDnevniIzvjestaji.Image = global::COMP_FISK.Properties.Resources.iconComp;
+            this.pnDnevniIzvjestaji.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
+            this.pnDnevniIzvjestaji.ImageSize = new System.Drawing.Size(48, 48);
+            this.pnDnevniIzvjestaji.IsRightToLeft = false;
+            this.pnDnevniIzvjestaji.OptionsMenu = null;
+            this.pnDnevniIzvjestaji.Scroll = false;
+            this.pnDnevniIzvjestaji.ShowGrip = false;
+            this.pnDnevniIzvjestaji.Size = new System.Drawing.Size(400, 100);
+            this.pnDnevniIzvjestaji.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnDnevniIzvjestaji.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnDnevniIzvjestaji.TitleText = "";
             // 
             // MainWindowView
             // 
@@ -650,6 +673,7 @@
         private Tulpep.NotificationWindow.PopupNotifier pnServisPozadina;
         private System.Windows.Forms.DataGridView dgvRacuniDataView;
         private Tulpep.NotificationWindow.PopupNotifier pnRestartTringServisa;
+        private Tulpep.NotificationWindow.PopupNotifier pnDnevniIzvjestaji;
     }
 }
 

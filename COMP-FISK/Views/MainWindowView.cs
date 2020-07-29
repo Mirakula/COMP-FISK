@@ -1,10 +1,7 @@
 ﻿using COMP_FISK.Controllers;
-using COMP_FISK.Models;
 using COMP_FISK.Views;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -32,6 +29,15 @@ namespace COMP_FISK
             systemWatcherFROM_FPerr.EnableRaisingEvents = true;
             systemWatcherFROM_FPerr.SynchronizingObject = this;
 
+            var result = FiskalniPrinterController.BrojDnevnihIzvjestaja();
+            int brojDnevnihIzvjestaja = Convert.ToInt32(result.Result);
+            if (brojDnevnihIzvjestaja <= 1995) { }
+            else
+            {
+                pnFiskalniSpojen.ContentText = "Uređaj je potrebno servisirati. Limit dnevnih izvještaja !";
+                pnFiskalniSpojen.Popup();
+            }
+
             var resultKonekcijaFiskalni = ProvjeriStatusFiskalnogPrintera();
 
             if (!resultKonekcijaFiskalni.Result)
@@ -46,6 +52,14 @@ namespace COMP_FISK
                 pnFiskalniSpojen.Popup();
             }
             DajPodatkeORacunima();
+            StartMinimizirano();
+        }
+
+        private void StartMinimizirano()
+        {
+            this.Visible = false;
+            this.ShowInTaskbar = false;
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void DajPodatkeORacunima()
@@ -86,6 +100,10 @@ namespace COMP_FISK
 
             pnFiskalniOK.ContentText = "Broj računa: " + value;
             pnFiskalniOK.Popup();
+
+            // Provjeri dnevne izvjetaje
+
+
         }
 
         private bool WaitForFile(string fullPath)

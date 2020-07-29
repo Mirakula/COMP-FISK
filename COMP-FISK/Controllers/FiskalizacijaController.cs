@@ -85,6 +85,10 @@ namespace COMP_FISK.Controllers
                 _reklamni = true;
                 _brojReklamacijaDuplikacija = BrojRacunaReklamacijaDuplikacija(data[0].Art_desc.ToString());
             }
+            else
+            {
+                _brojReklamacijaDuplikacija = BrojRacunaReklamacijaDuplikacija(data[0].Art_desc.ToString());
+            }
 
             List<RedDbfModel>.Enumerator enumeracijaArtikliStavke;
 
@@ -199,6 +203,7 @@ namespace COMP_FISK.Controllers
             else
             {
                 _odgovor = _tringFiscal.StampatiDuplikatFiskalnogRacuna(Convert.ToDouble(_brojReklamacijaDuplikacija));
+                return await Task.FromResult(_brojReklamacijaDuplikacija);
             }
 
             string rezultatFiskalizacije = Odgovor(_odgovor);

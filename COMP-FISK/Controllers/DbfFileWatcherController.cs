@@ -1,5 +1,6 @@
 ﻿using COMP_FISK.Models;
 using COMP_FISK.Properties;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
@@ -18,7 +19,12 @@ namespace COMP_FISK.Controllers
             dbfFileWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.CreationTime |
                                           NotifyFilters.FileName;
             dbfFileWatcher.Created += dbfWatcher_Created;
-            dbfFileWatcher.EnableRaisingEvents = true;
+            var result = FiskalniPrinterController.BrojDnevnihIzvjestaja();
+            int brojDnevnihIzvjestaja = Convert.ToInt32(result.Result);            
+            if (brojDnevnihIzvjestaja <= 1995 )
+                dbfFileWatcher.EnableRaisingEvents = true;
+            else
+                dbfFileWatcher.EnableRaisingEvents = false;
         }
 
         private async void dbfWatcher_Created(object sender, FileSystemEventArgs e)
