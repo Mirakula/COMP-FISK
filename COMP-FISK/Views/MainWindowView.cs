@@ -2,6 +2,7 @@
 using COMP_FISK.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -15,53 +16,134 @@ namespace COMP_FISK
         public MainWindowView()
         {
             InitializeComponent();
-            var systemWatcherFROM_FPok = new FileSystemWatcher(@"C:\fiskcomp\exch\lnk\FROM_FP", "*.OK");
-            systemWatcherFROM_FPok.NotifyFilter = NotifyFilters.CreationTime | NotifyFilters.FileName |
-                                                NotifyFilters.LastWrite;
-            systemWatcherFROM_FPok.Created += SystemWatcherFROM_FPok_Created;
-            systemWatcherFROM_FPok.EnableRaisingEvents = true;
-            systemWatcherFROM_FPok.SynchronizingObject = this;
-
-            var systemWatcherFROM_FPerr = new FileSystemWatcher(@"C:\fiskcomp\exch\lnk\FROM_FP", "*.ERR");
-            systemWatcherFROM_FPerr.NotifyFilter = NotifyFilters.CreationTime | NotifyFilters.FileName |
-                                                     NotifyFilters.LastWrite;
-            systemWatcherFROM_FPerr.Created += SystemWatcherFROM_FPerr_Created;
-            systemWatcherFROM_FPerr.EnableRaisingEvents = true;
-            systemWatcherFROM_FPerr.SynchronizingObject = this;
-
-            var result = FiskalniPrinterController.BrojDnevnihIzvjestaja();
-            int brojDnevnihIzvjestaja = 0;
-
-            if (result.Result == "gre")
-            {
-                pnFiskalniNijeSpojen.Popup();
-            }
-            else
-            {
-                brojDnevnihIzvjestaja = Convert.ToInt32(result.Result);
-            }
-            if (brojDnevnihIzvjestaja <= 1995) { }
-            else
-            {
-                pnFiskalniSpojen.ContentText = "Uređaj je potrebno servisirati. Limit dnevnih izvještaja !";
-                pnFiskalniSpojen.Popup();
-            }
-
-            var resultKonekcijaFiskalni = ProvjeriStatusFiskalnogPrintera();
-
-            if (!resultKonekcijaFiskalni.Result)
-            {
-                // Poruka da fiskalni nije spojen.
-                pnFiskalniNijeSpojen.Popup();
-            }
-            else
-            {
-                // Daj inforamcije iz fiskalnog
-                InicijalizacijaInformacija();
-                pnFiskalniSpojen.Popup();
-            }
-            DajPodatkeORacunima();
             StartMinimizirano();
+            DbfSystemWatcher();
+            OkSystemWatcher();
+            ErrSystemWatcher();
+            InicijalizacijaInformacija();
+            DajPodatkeORacunima();
+        }
+
+        private void ErrSystemWatcher()
+        {
+            string putanja = @"C:\fiskcomp\exch\lnk\FROM_FP";
+            string ekstenzija = "*.ERR";
+
+            var ErrWatcher = new FileSystemWatcher(putanja, ekstenzija);
+            ErrWatcher.EnableRaisingEvents = true;
+            ErrWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.CreationTime |
+                              NotifyFilters.FileName;
+            ErrWatcher.Created += ErrWatcher_Created;
+        }
+
+        private void OkSystemWatcher()
+        {
+            string putanja = @"C:\fiskcomp\exch\lnk\FROM_FP";
+            string ekstenzija = "*.OK";
+
+            var OkWatcher = new FileSystemWatcher(putanja, ekstenzija);
+            OkWatcher.EnableRaisingEvents = true;
+            OkWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.CreationTime |
+                              NotifyFilters.FileName;
+            OkWatcher.Created += OkWatcher_Created;
+        }
+
+        private void DbfSystemWatcher()
+        {
+            string putanja = @"C:\fiskcomp\exch\lnk\TO_FP";
+            string ekstenzija = "*.dbf";
+
+            var dbfWatcher = new FileSystemWatcher(putanja, ekstenzija);
+            dbfWatcher.EnableRaisingEvents = true;
+            dbfWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.CreationTime |
+                                          NotifyFilters.FileName;
+            dbfWatcher.Created += dbfWatcher_Created;
+        }
+
+        private void ErrWatcher_Created(object sender, FileSystemEventArgs e)
+        {
+            DirectoryInfo directory = new DirectoryInfo(@"C:\fiskcomp\exch\lnk\TO_FP");
+            FileInfo[] fileInfo = directory.GetFiles("*.ERR");
+
+            foreach (FileInfo file in fileInfo)
+            {
+                bool unlocked = false;
+
+                while (!unlocked)
+                {
+                    unlocked = WaitForFile(file);
+                }
+            }
+
+            pnFiskalniERR.ContentText = File.ReadAllText(e.FullPath);
+            pnFiskalniERR.Popup();
+        }
+
+        private void OkWatcher_Created(object sender, FileSystemEventArgs e)
+        {
+            DirectoryInfo directory = new DirectoryInfo(@"C:\fiskcomp\exch\lnk\TO_FP");
+            FileInfo[] fileInfo = directory.GetFiles("*.OK");
+
+            foreach (FileInfo file in fileInfo)
+            {
+                bool unlocked = false;
+
+                while (!unlocked)
+                {
+                    unlocked = WaitForFile(file);
+                }
+            }
+
+            pnFiskalniOK.ContentText = File.ReadAllText(e.FullPath);
+            pnFiskalniOK.Popup();
+        }
+
+        private async void dbfWatcher_Created(object sender, FileSystemEventArgs e)
+        {
+            // Dobavi samo dbf fajlove iz TO_FP
+            DirectoryInfo directory = new DirectoryInfo(@"C:\fiskcomp\exch\lnk\TO_FP");
+            FileInfo[] fileInfo = directory.GetFiles("*.dbf");
+
+            // Provjeri da li je fajl zakljucan
+            foreach (FileInfo file in fileInfo)
+            {
+                bool unlocked = false;
+
+                while (!unlocked)
+                {
+                    unlocked = WaitForFile(file);
+                }
+            }
+
+            // Za svaki racun pravimo novu instancu
+            // Preuzimamo podatke, sortiramo ih
+            // Onda saljemo sortirane podatke u objekat FiskalniRacun 
+            // Taj objekat saljemo na stampu
+            foreach (FileInfo dbfRacun in fileInfo)
+            {
+                var stampan = RacuniController.ProvjeriStampan(dbfRacun.Name);
+                if (stampan == null)
+                {
+                    var ControllerFiskalnihRacuna = new FiskalizacijaController();
+                    var brojRacuna = await ControllerFiskalnihRacuna.PreuzmiRasporediStampaj(dbfRacun.Name, dbfRacun.FullName);
+                    var rezultatFiskalizacije = char.IsNumber(brojRacuna[0]);
+
+                    Thread.Sleep(1000);
+                    if (rezultatFiskalizacije)
+                    {
+                        RacuniController.UpisiOdgovorOK(brojRacuna, dbfRacun.Name);
+                    }
+                    else
+                        RacuniController.UpisiOdgovorERR(brojRacuna, dbfRacun.Name);
+                }
+                else
+                {
+                    string putanjaFajla = dbfRacun.FullName;
+                    string destinacija = @"C:\fiskcomp\exch\lnk\comp\" + dbfRacun.Name;
+                    RacuniController.PremjestiDbf(putanjaFajla, destinacija);
+                    break;
+                }
+            }
         }
 
         private void StartMinimizirano()
@@ -82,47 +164,14 @@ namespace COMP_FISK
             dgvRacuniDataView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-        private void SystemWatcherFROM_FPerr_Created(object sender, FileSystemEventArgs e)
-        {
-            string value = File.ReadAllText(e.FullPath);
-
-            bool unlocked = false;
-
-            while (!unlocked)
-            {
-                unlocked = WaitForFile(e.FullPath);
-            }
-            pnFiskalniERR.ContentText = "Greška: " + value;
-            pnFiskalniERR.Popup();
-        }
-
-        private void SystemWatcherFROM_FPok_Created(object sender, FileSystemEventArgs e)
-        {
-            string value = File.ReadAllText(e.FullPath);
-            
-            bool unlocked = false;
-
-            while (!unlocked)
-            {
-                unlocked = WaitForFile(e.FullPath);
-            }
-
-            pnFiskalniOK.ContentText = "Broj računa: " + value;
-            pnFiskalniOK.Popup();
-
-            // Provjeri dnevne izvjetaje
-
-
-        }
-
-        private bool WaitForFile(string fullPath)
+        private bool WaitForFile(FileInfo fullFajlPath)
         {
             bool FileReady = false;
             while (!FileReady)
             {
                 try
                 {
-                    using (File.Open(fullPath, FileMode.Open))
+                    using (FileStream stream = fullFajlPath.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None))
                     {
                         FileReady = true;
                     }
@@ -132,16 +181,9 @@ namespace COMP_FISK
                     //File isn't ready yet, so we need to keep on waiting until it is.
                 }
                 //We'll want to wait a bit between polls, if the file isn't ready.
-                if (!FileReady) Thread.Sleep(1000);
+                if (!FileReady) Thread.Sleep(2000);
             }
             return FileReady;
-        }
-
-        private async Task<bool> ProvjeriStatusFiskalnogPrintera()
-        {
-            bool result = await FiskalniPrinterController.StatusPrintera();
-
-            return await Task.FromResult(result);
         }
 
         private async void InicijalizacijaInformacija()

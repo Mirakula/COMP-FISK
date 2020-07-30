@@ -114,7 +114,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DbfFileWatcherController.cs" />
     <Compile Include="Controllers\FiskalizacijaController.cs" />
     <Compile Include="Controllers\FiskalniDataGridViewController.cs" />
     <Compile Include="Controllers\FiskalniPrinterController.cs" />
