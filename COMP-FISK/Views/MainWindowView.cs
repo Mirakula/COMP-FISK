@@ -30,7 +30,16 @@ namespace COMP_FISK
             systemWatcherFROM_FPerr.SynchronizingObject = this;
 
             var result = FiskalniPrinterController.BrojDnevnihIzvjestaja();
-            int brojDnevnihIzvjestaja = Convert.ToInt32(result.Result);
+            int brojDnevnihIzvjestaja = 0;
+
+            if (result.Result == "gre")
+            {
+                pnFiskalniNijeSpojen.Popup();
+            }
+            else
+            {
+                brojDnevnihIzvjestaja = Convert.ToInt32(result.Result);
+            }
             if (brojDnevnihIzvjestaja <= 1995) { }
             else
             {

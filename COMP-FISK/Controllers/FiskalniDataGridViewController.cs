@@ -20,10 +20,10 @@ namespace COMP_FISK.Controllers
             {
                 var podaciOK = new FolderItemsModel
                 {
-                    Racun = item.Name,
-                    BR = File.ReadAllText(item.FullName),
+                    Racun = item.Name.Trim(),
+                    BR = File.ReadAllText(item.FullName.Trim()),
                     Vrijeme = item.LastWriteTime,
-                    Status = item.Extension,
+                    Status = item.Extension.Trim(),
                 };
 
                 listaOdgovora.Add(podaciOK);

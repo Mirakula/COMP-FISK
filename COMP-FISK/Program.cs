@@ -26,8 +26,8 @@ namespace COMP_FISK
                 FolderController.KreirajDirektorije();
 
             // Dodaj ovo u registry za auto startup aplikacije
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            key.SetValue("Servis-Fiskalizacija", Application.ExecutablePath);
+            //RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            //key.SetValue("Servis-Fiskalizacija", Application.ExecutablePath);
 
             DbfFileWatcherController FileWatcher = new DbfFileWatcherController(@"C:\fiskcomp\exch\lnk\TO_FP");
 

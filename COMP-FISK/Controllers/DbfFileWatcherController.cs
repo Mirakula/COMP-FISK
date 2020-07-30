@@ -19,8 +19,20 @@ namespace COMP_FISK.Controllers
             dbfFileWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.CreationTime |
                                           NotifyFilters.FileName;
             dbfFileWatcher.Created += dbfWatcher_Created;
-            var result = FiskalniPrinterController.BrojDnevnihIzvjestaja();
-            int brojDnevnihIzvjestaja = Convert.ToInt32(result.Result);            
+
+            // provjere oko inicajlizacije i dobavljanje podataka.
+            var resultDnevniIzvjestaji = FiskalniPrinterController.BrojDnevnihIzvjestaja();
+            var resultStatusPrintera = FiskalniPrinterController.StatusPrintera();
+            int brojDnevnihIzvjestaja = 0;
+
+            if (!resultStatusPrintera.Result)
+            {
+
+            }
+            else
+            {
+                brojDnevnihIzvjestaja = Convert.ToInt32(resultDnevniIzvjestaji.Result);
+            }
             if (brojDnevnihIzvjestaja <= 1995 )
                 dbfFileWatcher.EnableRaisingEvents = true;
             else
