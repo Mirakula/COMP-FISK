@@ -1,12 +1,13 @@
 ﻿using COMP_FISK.Controllers;
+using COMP_FISK.Models;
 using COMP_FISK.Views;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COMP_FISK
@@ -162,6 +163,8 @@ namespace COMP_FISK
             dgvRacuniDataView.RowTemplate.Height = 35;
             dgvRacuniDataView.DefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
             dgvRacuniDataView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dgvRacuniDataView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvRacuniDataView.Columns[1].Width = 75;
         }
 
         private bool WaitForFile(FileInfo fullFajlPath)
@@ -190,11 +193,19 @@ namespace COMP_FISK
         {
             List<string> printerInformacije = await FiskalniPrinterController.FiskalniPrinterInformacije();
 
-            lblFactoryIdVar.Text = printerInformacije[0].ToString();
-            lblTipPrinteraVar.Text = printerInformacije[1].ToString();
-            lblIBFMVar.Text = printerInformacije[2].ToString();
-            lblJIBVar.Text = printerInformacije[3].ToString();
-            lblBrojIzvjestajaVar.Text = printerInformacije[4].ToString();
+            if (printerInformacije.Count != 0)
+            {
+                lblFactoryIdVar.Text = printerInformacije[0].ToString();
+                lblTipPrinteraVar.Text = printerInformacije[1].ToString();
+                lblIBFMVar.Text = printerInformacije[2].ToString();
+                lblJIBVar.Text = printerInformacije[3].ToString();
+                lblBrojIzvjestajaVar.Text = printerInformacije[4].ToString();
+            }
+            else
+            {
+                pnFiskalniNijeSpojen.Popup();
+            }
+
         }
 
         private void closeBox_Click(object sender, EventArgs e)
@@ -207,13 +218,16 @@ namespace COMP_FISK
             pnServisPozadina.Popup();
             this.Hide();
             this.ShowInTaskbar = false;
+            this.WindowState = FormWindowState.Minimized;
             DajPodatkeORacunima();
         }
 
         private void prikaziProzorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Show();
+            this.Visible = true;
             this.ShowInTaskbar = true;
+            this.WindowState = FormWindowState.Normal;
             DajPodatkeORacunima();
         }
 

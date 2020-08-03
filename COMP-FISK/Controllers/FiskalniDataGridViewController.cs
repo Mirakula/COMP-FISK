@@ -18,15 +18,15 @@ namespace COMP_FISK.Controllers
 
             foreach (FileInfo item in fileInfo)
             {
-                var podaciOK = new FolderItemsModel
+                var podaci = new FolderItemsModel
                 {
                     Racun = item.Name.Trim(),
                     BR = File.ReadAllText(item.FullName.Trim()),
-                    Vrijeme = item.LastWriteTime,
+                    Vrijeme = item.LastWriteTime.ToUniversalTime(),
                     Status = item.Extension.Trim(),
                 };
 
-                listaOdgovora.Add(podaciOK);
+                listaOdgovora.Add(podaci);
             }
             return listaOdgovora;
         }

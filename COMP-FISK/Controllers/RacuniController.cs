@@ -33,12 +33,9 @@ namespace COMP_FISK.Controllers
 
         public static void PremjestiDbf(string putanjaFajla, string destinacija)
         {
-            var fajlBezExtenzije = Path.GetFileNameWithoutExtension(putanjaFajla);
-            var fullPutanja = @"C:\fiskcomp\exch\lnk\Neodstampani\" + fajlBezExtenzije + ".dbf";
-
-            if (File.Exists(fullPutanja))
+            if (File.Exists(destinacija))
             {
-                File.Delete(fullPutanja);
+                File.Delete(destinacija);
                 File.Move(putanjaFajla, destinacija);
             }
             else

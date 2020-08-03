@@ -167,7 +167,7 @@
             this.leftPnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPnl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leftPnl.Location = new System.Drawing.Point(0, 0);
-            this.leftPnl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.leftPnl.Margin = new System.Windows.Forms.Padding(4);
             this.leftPnl.Name = "leftPnl";
             this.leftPnl.Size = new System.Drawing.Size(267, 394);
             this.leftPnl.TabIndex = 0;
@@ -204,9 +204,9 @@
             this.grbInformacije.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbInformacije.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.grbInformacije.Location = new System.Drawing.Point(11, 154);
-            this.grbInformacije.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbInformacije.Margin = new System.Windows.Forms.Padding(4);
             this.grbInformacije.Name = "grbInformacije";
-            this.grbInformacije.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbInformacije.Padding = new System.Windows.Forms.Padding(4);
             this.grbInformacije.Size = new System.Drawing.Size(247, 226);
             this.grbInformacije.TabIndex = 4;
             this.grbInformacije.TabStop = false;
@@ -305,7 +305,7 @@
             // 
             this.logoBox.Image = ((System.Drawing.Image)(resources.GetObject("logoBox.Image")));
             this.logoBox.Location = new System.Drawing.Point(99, 37);
-            this.logoBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logoBox.Margin = new System.Windows.Forms.Padding(4);
             this.logoBox.Name = "logoBox";
             this.logoBox.Size = new System.Drawing.Size(84, 70);
             this.logoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -320,7 +320,7 @@
             this.topPnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPnl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.topPnl.Location = new System.Drawing.Point(267, 0);
-            this.topPnl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.topPnl.Margin = new System.Windows.Forms.Padding(4);
             this.topPnl.Name = "topPnl";
             this.topPnl.Size = new System.Drawing.Size(483, 25);
             this.topPnl.TabIndex = 1;
@@ -328,8 +328,8 @@
             // minimizeBox
             // 
             this.minimizeBox.Image = ((System.Drawing.Image)(resources.GetObject("minimizeBox.Image")));
-            this.minimizeBox.Location = new System.Drawing.Point(431, 2);
-            this.minimizeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimizeBox.Location = new System.Drawing.Point(431, 4);
+            this.minimizeBox.Margin = new System.Windows.Forms.Padding(4);
             this.minimizeBox.Name = "minimizeBox";
             this.minimizeBox.Size = new System.Drawing.Size(20, 18);
             this.minimizeBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -340,8 +340,8 @@
             // closeBox
             // 
             this.closeBox.Image = ((System.Drawing.Image)(resources.GetObject("closeBox.Image")));
-            this.closeBox.Location = new System.Drawing.Point(459, 2);
-            this.closeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeBox.Location = new System.Drawing.Point(459, 4);
+            this.closeBox.Margin = new System.Windows.Forms.Padding(4);
             this.closeBox.Name = "closeBox";
             this.closeBox.Size = new System.Drawing.Size(20, 18);
             this.closeBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -625,7 +625,7 @@
             this.Controls.Add(this.leftPnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainWindowView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
