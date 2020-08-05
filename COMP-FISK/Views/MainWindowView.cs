@@ -25,7 +25,6 @@ namespace COMP_FISK
             StartMinimizirano();
             InicijalizacijaInformacija();
             DajPodatkeORacunima();
-            DnevniIzvjestajiProvjera();
 
             _watcher.SynchronizingObject = this;
             _watcher.EnableRaisingEvents = true;
@@ -125,17 +124,19 @@ namespace COMP_FISK
         {
             List<string> printerInformacije = await FiskalniPrinterController.FiskalniPrinterInformacije();
 
-            if (printerInformacije.Count != 0)
+            if (printerInformacije[0] != string.Empty)
             {
                 lblFactoryIdVar.Text = printerInformacije[0].ToString();
                 lblTipPrinteraVar.Text = printerInformacije[1].ToString();
                 lblIBFMVar.Text = printerInformacije[2].ToString();
                 lblJIBVar.Text = printerInformacije[3].ToString();
                 lblBrojIzvjestajaVar.Text = printerInformacije[4].ToString();
+                DnevniIzvjestajiProvjera();
                 pnServisPozadina.Popup();
             }
             else
                 pnFiskalniNijeSpojen.Popup();
+
         }
 
         private void closeBox_Click(object sender, EventArgs e)
