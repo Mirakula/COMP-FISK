@@ -27,8 +27,7 @@ namespace COMP_FISK.Controllers
             TextWriter odgovor = new StreamWriter(putanjaFROM_FP + @"\" + Path.GetFileNameWithoutExtension(nazivFajla) + ".OK");
             odgovor.WriteLine(brojRacuna);
             odgovor.Close();
-            PremjestiDbf(@"C:\fiskcomp\exch\lnk\TO_FP\" + nazivFajla, @"C:\fiskcomp\exch\lnk\comp\" + nazivFajla);
-            
+            PremjestiDbf(@"C:\fiskcomp\exch\lnk\TO_FP\" + Path.GetFileNameWithoutExtension(nazivFajla) + ".dbf", @"C:\fiskcomp\exch\lnk\comp\" + Path.GetFileNameWithoutExtension(nazivFajla) + ".dbf");
         }
 
         public static void PremjestiDbf(string putanjaFajla, string destinacija)

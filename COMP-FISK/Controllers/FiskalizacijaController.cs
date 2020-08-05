@@ -13,8 +13,7 @@ namespace COMP_FISK.Controllers
     {
         OdbcDataAdapter _adapter = new OdbcDataAdapter();
         DataTable _table = new DataTable();
-        TringFiskalniPrinter _tringFiscal = new TringFiskalniPrinter();
-        Racun _racun = new Racun();
+
         Kupac _kupac = new Kupac();
         KasaOdgovor _odgovor = new KasaOdgovor();
         DataTable _dataTable = new DataTable();
@@ -39,6 +38,9 @@ namespace COMP_FISK.Controllers
             _connection.Open();
             _adapter.Fill(_dataTable);
             _connection.Close();
+
+            TringFiskalniPrinter _tringFiscal = new TringFiskalniPrinter();
+            Racun _racun = new Racun();
 
             var data = (from rw in _dataTable.AsEnumerable()
                         select new RedDbfModel()
@@ -84,6 +86,7 @@ namespace COMP_FISK.Controllers
             {
                 _reklamni = true;
                 _brojReklamacijaDuplikacija = BrojRacunaReklamacijaDuplikacija(data[0].Art_desc.ToString());
+                _racun.BrojRacuna = _brojReklamacijaDuplikacija;
             }
             else
             {
@@ -154,26 +157,29 @@ namespace COMP_FISK.Controllers
                 }
             }
 
-            if (podaciKupac[0].Art_desc.Length != 13 && podaciKupac[1].Art_desc.Length == 0 && podaciKupac[2].Art_desc.Length == 0 && podaciKupac[3].Art_desc.Length != 5 && podaciKupac[4].Art_desc.Length == 0)
+            if (!_reklamni)
             {
-                // podaci o kupcu nisu ispravni poruka
-            }
-            else
-            {
-                _kupac.IDbroj = Convert.ToDouble(podaciKupac[0].Art_desc);
-                _kupac.Naziv = podaciKupac[1].Art_desc;
-                _kupac.Adresa = podaciKupac[2].Art_desc;
-                try
+                if (podaciKupac[0].Art_desc.Length != 13 && podaciKupac[1].Art_desc.Length == 0 && podaciKupac[2].Art_desc.Length == 0 && podaciKupac[3].Art_desc.Length != 5 && podaciKupac[4].Art_desc.Length == 0)
                 {
-                    _kupac.PostanskiBroj = Convert.ToInt32(podaciKupac[3].Art_desc);
+                    // podaci o kupcu nisu ispravni poruka
                 }
-                catch
+                else
                 {
-                    _kupac.PostanskiBroj = 0; 
-                }
-                _kupac.Grad = podaciKupac[4].Art_desc;
+                    _kupac.IDbroj = Convert.ToDouble(podaciKupac[0].Art_desc);
+                    _kupac.Naziv = podaciKupac[1].Art_desc;
+                    _kupac.Adresa = podaciKupac[2].Art_desc;
+                    try
+                    {
+                        _kupac.PostanskiBroj = Convert.ToInt32(podaciKupac[3].Art_desc);
+                    }
+                    catch
+                    {
+                        _kupac.PostanskiBroj = 0;
+                    }
+                    _kupac.Grad = podaciKupac[4].Art_desc;
 
-                _racun.Kupac = _kupac;
+                    _racun.Kupac = _kupac;
+                }
             }
 
             if (_fiskalni)
@@ -193,11 +199,11 @@ namespace COMP_FISK.Controllers
                             break;
 
                         RacunStavka trenutniRed = enumeratorStavkeRacuna.Current;
-                        povrat = trenutniRed.artikal.Cijena * trenutniRed.Kolicina;
+                        povrat += trenutniRed.artikal.Cijena * trenutniRed.Kolicina;
                     }
                 }
                 // TODO: naci broj fiskalnog racuna za reklamaciju.
-                _tringFiscal.UnosNovca(VrstePlacanja.Gotovina, povrat);
+                _tringFiscal.UnosNovca(VrstePlacanja.Gotovina, Math.Round(povrat, 2));
                 _odgovor = _tringFiscal.StampatiReklamiraniRacun(_racun);
             }
             else
