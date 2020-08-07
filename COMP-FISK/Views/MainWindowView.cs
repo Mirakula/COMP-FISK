@@ -36,20 +36,29 @@ namespace COMP_FISK
             var printerInformacije = Task.Run(() => FiskalniPrinterController.FiskalniPrinterInformacije());
             var rezultatPrinterInformacije = printerInformacije.Result;
 
-            if (Convert.ToInt32(rezultatPrinterInformacije[4]) >= 1800 && Convert.ToInt32(rezultatPrinterInformacije[4]) <= 1990)
+            if (rezultatPrinterInformacije.Count != 0)
             {
-                pnDnevniIzvjestajiLimit.Popup();
-                return true;
-            }
-            else if (Convert.ToInt32(rezultatPrinterInformacije[4]) >= 1992)
-            {
-                _watcher.EnableRaisingEvents = false;
-                pnDnevniIzvjestajiBlok.ContentText = "Fiskalizacija onemogućena. Uređaj je prešao dozvoljeni limit dnevnih izvještaja 1990. Kontaktirajte tehničku podršku.";
-                pnDnevniIzvjestajiBlok.Popup();
-                return false;
+                if (Convert.ToInt32(rezultatPrinterInformacije[4]) >= 1800 && Convert.ToInt32(rezultatPrinterInformacije[4]) <= 1990)
+                {
+                    pnDnevniIzvjestajiLimit.Popup();
+                    return true;
+                }
+                else if(Convert.ToInt32(rezultatPrinterInformacije[4]) >= 1992)
+                {
+                    _watcher.EnableRaisingEvents = false;
+                    pnDnevniIzvjestajiBlok.ContentText = "Fiskalizacija onemogućena. Uređaj je prešao dozvoljeni limit dnevnih izvještaja 1990. Kontaktirajte tehničku podršku.";
+                    pnDnevniIzvjestajiBlok.Popup();
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
             else
-                return true;
+            {
+                return false;
+            }
         }
 
         private async void dbfWatcher_Created(object sender, FileSystemEventArgs e)
@@ -124,7 +133,7 @@ namespace COMP_FISK
         {
             List<string> printerInformacije = await FiskalniPrinterController.FiskalniPrinterInformacije();
 
-            if (printerInformacije[0] != string.Empty)
+            if (printerInformacije.Count == 5)
             {
                 lblFactoryIdVar.Text = printerInformacije[0].ToString();
                 lblTipPrinteraVar.Text = printerInformacije[1].ToString();
@@ -136,7 +145,6 @@ namespace COMP_FISK
             }
             else
                 pnFiskalniNijeSpojen.Popup();
-
         }
 
         private void closeBox_Click(object sender, EventArgs e)
@@ -229,6 +237,7 @@ namespace COMP_FISK
             }
             else
             {
+                pnDnevniIzvjestajiBlok.Popup();
                 _watcher.EnableRaisingEvents = false;
             }
         }

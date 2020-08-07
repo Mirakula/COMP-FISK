@@ -61,7 +61,6 @@ namespace COMP_FISK.Controllers
                         return await Task.FromResult(odgovor.Odgovori[i].Vrijednost.ToString());
                 }
             }
-
             return "gre";
         }
 
