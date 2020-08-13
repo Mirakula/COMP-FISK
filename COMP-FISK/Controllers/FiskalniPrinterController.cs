@@ -63,7 +63,6 @@ namespace COMP_FISK.Controllers
             }
             return "gre";
         }
-
         public static async Task<bool> PrintajDnevniIzvjestaj()
         {
             var fp = new TringFiskalniPrinter();
