@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_1448439296088B3349CD50E5EBCBD8D0"
+        "MsmKey" = "8:_4ACF587298D5FFEE67E9071405780456"
         "OwnerKey" = "8:_76D46B72A6044AAA97CBB3A2E4EDD3B4"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -64,7 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1448439296088B3349CD50E5EBCBD8D0"
+        "OwnerKey" = "8:_4ACF587298D5FFEE67E9071405780456"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -92,6 +92,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -122,6 +130,11 @@
                     {
                     "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.8"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.8 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.8"
                     }
                 }
             }
@@ -154,14 +167,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1448439296088B3349CD50E5EBCBD8D0"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4ACF587298D5FFEE67E9071405780456"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_1448439296088B3349CD50E5EBCBD8D0"
+                    "_4ACF587298D5FFEE67E9071405780456"
                     {
                     "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
@@ -335,7 +348,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:COMP-FISKALIZACIJA"
         "ProductCode" = "8:{12708AD5-864F-47EB-8AA8-8D7A9FD6E8AF}"
-        "PackageCode" = "8:{135D32A4-CB2D-43A5-8199-D2910163ECD1}"
+        "PackageCode" = "8:{3A5BE76C-431A-40EC-80C8-DDB4CBD2ECA5}"
         "UpgradeCode" = "8:{87E42761-2970-47AE-AF26-4F79D1B1A91A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
