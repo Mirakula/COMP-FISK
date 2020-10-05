@@ -21,7 +21,6 @@ namespace COMP_FISK
 
         public MainWindowView()
         {
-            InitializeComponent();
             StartMinimizirano();
             InicijalizacijaInformacija();
             DajPodatkeORacunima();
@@ -29,6 +28,7 @@ namespace COMP_FISK
             _watcher.SynchronizingObject = this;
             _watcher.EnableRaisingEvents = true;
             _watcher.Created += dbfWatcher_Created;
+            InitializeComponent();
         }
 
         private bool DnevniIzvjestajiProvjera()
@@ -133,7 +133,7 @@ namespace COMP_FISK
         {
             List<string> printerInformacije = FiskalniPrinterController.FiskalniPrinterInformacije();
 
-            if (printerInformacije != null)
+            if (printerInformacije.Count != 0)
             {
                 lblFactoryIdVar.Text = printerInformacije[0].ToString();
                 lblTipPrinteraVar.Text = printerInformacije[1].ToString();
