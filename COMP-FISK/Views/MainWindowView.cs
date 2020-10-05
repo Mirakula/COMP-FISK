@@ -129,9 +129,9 @@ namespace COMP_FISK
             dgvRacuniDataView.Columns[1].Width = 75;
         }
 
-        private async void InicijalizacijaInformacija()
+        private void InicijalizacijaInformacija()
         {
-            List<string> printerInformacije = await FiskalniPrinterController.FiskalniPrinterInformacije();
+            List<string> printerInformacije = FiskalniPrinterController.FiskalniPrinterInformacije();
 
             if (printerInformacije != null)
             {
