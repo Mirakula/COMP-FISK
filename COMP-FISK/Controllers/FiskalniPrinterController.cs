@@ -33,8 +33,6 @@ namespace COMP_FISK.Controllers
                 }
             }
 
-            resultsList.RemoveRange(5, 3);
-
             return await Task.FromResult(resultsList);
         }
 
