@@ -133,7 +133,7 @@ namespace COMP_FISK
         {
             List<string> printerInformacije = await FiskalniPrinterController.FiskalniPrinterInformacije();
 
-            if (printerInformacije.Count == 5)
+            if (printerInformacije != null)
             {
                 lblFactoryIdVar.Text = printerInformacije[0].ToString();
                 lblTipPrinteraVar.Text = printerInformacije[1].ToString();
