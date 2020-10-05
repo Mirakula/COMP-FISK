@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ContextMenuStrip contextMenu;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowView));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prikaziProzorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provjeriStatusPrinteraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dnevniIzvještajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -189,7 +189,7 @@
             this.leftPnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPnl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leftPnl.Location = new System.Drawing.Point(0, 0);
-            this.leftPnl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.leftPnl.Margin = new System.Windows.Forms.Padding(4);
             this.leftPnl.Name = "leftPnl";
             this.leftPnl.Size = new System.Drawing.Size(267, 394);
             this.leftPnl.TabIndex = 0;
@@ -226,9 +226,9 @@
             this.grbInformacije.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbInformacije.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.grbInformacije.Location = new System.Drawing.Point(11, 154);
-            this.grbInformacije.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbInformacije.Margin = new System.Windows.Forms.Padding(4);
             this.grbInformacije.Name = "grbInformacije";
-            this.grbInformacije.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbInformacije.Padding = new System.Windows.Forms.Padding(4);
             this.grbInformacije.Size = new System.Drawing.Size(247, 226);
             this.grbInformacije.TabIndex = 4;
             this.grbInformacije.TabStop = false;
@@ -327,7 +327,7 @@
             // 
             this.logoBox.Image = ((System.Drawing.Image)(resources.GetObject("logoBox.Image")));
             this.logoBox.Location = new System.Drawing.Point(99, 37);
-            this.logoBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logoBox.Margin = new System.Windows.Forms.Padding(4);
             this.logoBox.Name = "logoBox";
             this.logoBox.Size = new System.Drawing.Size(84, 70);
             this.logoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -342,7 +342,7 @@
             this.topPnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPnl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.topPnl.Location = new System.Drawing.Point(267, 0);
-            this.topPnl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.topPnl.Margin = new System.Windows.Forms.Padding(4);
             this.topPnl.Name = "topPnl";
             this.topPnl.Size = new System.Drawing.Size(453, 25);
             this.topPnl.TabIndex = 1;
@@ -351,7 +351,7 @@
             // 
             this.minimizeBox.Image = ((System.Drawing.Image)(resources.GetObject("minimizeBox.Image")));
             this.minimizeBox.Location = new System.Drawing.Point(397, 4);
-            this.minimizeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimizeBox.Margin = new System.Windows.Forms.Padding(4);
             this.minimizeBox.Name = "minimizeBox";
             this.minimizeBox.Size = new System.Drawing.Size(20, 18);
             this.minimizeBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -363,7 +363,7 @@
             // 
             this.closeBox.Image = ((System.Drawing.Image)(resources.GetObject("closeBox.Image")));
             this.closeBox.Location = new System.Drawing.Point(425, 4);
-            this.closeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeBox.Margin = new System.Windows.Forms.Padding(4);
             this.closeBox.Name = "closeBox";
             this.closeBox.Size = new System.Drawing.Size(20, 18);
             this.closeBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -566,14 +566,14 @@
             this.dgvRacuniDataView.BackgroundColor = System.Drawing.Color.White;
             this.dgvRacuniDataView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRacuniDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRacuniDataView.ColumnHeadersHeight = 29;
             this.dgvRacuniDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRacuniDataView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -586,8 +586,8 @@
             this.dgvRacuniDataView.RowHeadersVisible = false;
             this.dgvRacuniDataView.RowHeadersWidth = 51;
             this.dgvRacuniDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRacuniDataView.RowTemplate.Height = 24;
             this.dgvRacuniDataView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvRacuniDataView.Size = new System.Drawing.Size(453, 369);
@@ -625,6 +625,7 @@
             this.pnDnevniIzvjestajiLimit.ContentPadding = new System.Windows.Forms.Padding(35, 10, 0, 0);
             this.pnDnevniIzvjestajiLimit.ContentText = "Fiskalni printer je prešao 1800 dnevnih izvještaja ! Maksimalni broj je 1995. Raz" +
     "mislite o servisiranju uređaja. ";
+            this.pnDnevniIzvjestajiLimit.Delay = 6000;
             this.pnDnevniIzvjestajiLimit.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.pnDnevniIzvjestajiLimit.Image = global::COMP_FISK.Properties.Resources.iconComp;
             this.pnDnevniIzvjestajiLimit.ImagePadding = new System.Windows.Forms.Padding(15, 23, 0, 0);
@@ -694,7 +695,7 @@
             this.Controls.Add(this.leftPnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainWindowView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
