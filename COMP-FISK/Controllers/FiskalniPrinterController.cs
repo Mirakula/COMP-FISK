@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Tring.Fiscal.Driver;
 
@@ -29,10 +27,18 @@ namespace COMP_FISK.Controllers
             {
                 for (int i = 0; i < odgovor.Odgovori.Count; i++)
                 {
-                    resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
+                    if (odgovor.Odgovori[i].Naziv.Equals("FactoryId"))
+                        resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
+                    if (odgovor.Odgovori[i].Naziv.Equals("FMSignature"))
+                        resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
+                    if (odgovor.Odgovori[i].Naziv.Equals("IBFM"))
+                        resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
+                    if (odgovor.Odgovori[i].Naziv.Equals("JIB"))
+                        resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
+                    if (odgovor.Odgovori[i].Naziv.Equals("NumberOfDailyReports"))
+                        resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
                 }
             }
-
             return resultsList;
         }
 

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COMP_FISK
@@ -19,9 +18,12 @@ namespace COMP_FISK
             EnableRaisingEvents = true,
         };
 
+        public List<string> printerInformacije = new List<string>();
+
         public MainWindowView()
         {
             InitializeComponent();
+            printerInformacije = FiskalniPrinterController.FiskalniPrinterInformacije();
             StartMinimizirano();
             InicijalizacijaInformacija();
             DajPodatkeORacunima();
@@ -33,17 +35,16 @@ namespace COMP_FISK
 
         private bool DnevniIzvjestajiProvjera()
         {
-            var printerInformacije = Task.Run(() => FiskalniPrinterController.FiskalniPrinterInformacije());
-            var rezultatPrinterInformacije = printerInformacije.Result;
-
-            if (rezultatPrinterInformacije.Count != 0)
+            var printerInformacije = FiskalniPrinterController.FiskalniPrinterInformacije();
+            
+            if (printerInformacije.Count != 0)
             {
-                if (Convert.ToInt32(rezultatPrinterInformacije[4]) >= 1800 && Convert.ToInt32(rezultatPrinterInformacije[4]) <= 1990)
+                if (Convert.ToInt32(printerInformacije[4]) >= 1800 && Convert.ToInt32(printerInformacije[4]) <= 1990)
                 {
                     pnDnevniIzvjestajiLimit.Popup();
                     return true;
                 }
-                else if(Convert.ToInt32(rezultatPrinterInformacije[4]) >= 1992)
+                else if(Convert.ToInt32(printerInformacije[4]) >= 1992)
                 {
                     _watcher.EnableRaisingEvents = false;
                     pnDnevniIzvjestajiBlok.ContentText = "Fiskalizacija onemogućena. Uređaj je prešao dozvoljeni limit dnevnih izvještaja 1990. Kontaktirajte tehničku podršku.";
@@ -131,9 +132,6 @@ namespace COMP_FISK
 
         private void InicijalizacijaInformacija()
         {
-            var printerInformacije = new List<string>();
-            printerInformacije = FiskalniPrinterController.FiskalniPrinterInformacije();
-
             if (printerInformacije.Count != 0)
             {
                 lblFactoryIdVar.Text = printerInformacije[0].ToString();
