@@ -43,9 +43,9 @@ namespace COMP_FISK
                 pnFiskalniNijeSpojen.Popup();
         }
 
-        private bool DnevniIzvjestajiProvjera()
+        private async Task<bool> DnevniIzvjestajiProvjera()
         {
-            var printerInformacije = FiskalniPrinterController.FiskalniPrinterInformacije();
+            var printerInformacije = await FiskalniPrinterController.FiskalniPrinterInformacije();
             
             if (printerInformacije.Count != 0)
             {

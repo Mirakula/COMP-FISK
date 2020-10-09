@@ -17,7 +17,7 @@ namespace COMP_FISK.Controllers
                 return await Task.FromResult(false);
         }
 
-        public static List<string> FiskalniPrinterInformacije()
+        public static async Task<List<string>> FiskalniPrinterInformacije()
         {
             var fp = new TringFiskalniPrinter();
             var odgovor = fp.OsnovneInformacije();
@@ -39,7 +39,7 @@ namespace COMP_FISK.Controllers
                         resultsList.Add(odgovor.Odgovori[i].Vrijednost.ToString());
                 }
             }
-            return resultsList;
+            return await Task.FromResult(resultsList);
         }
 
         public static async Task<string> BrojDnevnihIzvjestaja()
