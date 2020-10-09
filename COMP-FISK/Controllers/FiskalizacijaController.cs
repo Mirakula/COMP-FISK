@@ -12,7 +12,6 @@ namespace COMP_FISK.Controllers
     public class FiskalizacijaController
     {
         OdbcDataAdapter _adapter = new OdbcDataAdapter();
-        DataTable _table = new DataTable();
 
         Kupac _kupac = new Kupac();
         KasaOdgovor _odgovor = new KasaOdgovor();

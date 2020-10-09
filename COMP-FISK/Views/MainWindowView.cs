@@ -23,9 +23,7 @@ namespace COMP_FISK
         public MainWindowView()
         {
             InitializeComponent();
-            printerInformacije = FiskalniPrinterController.FiskalniPrinterInformacije();
             StartMinimizirano();
-            InicijalizacijaInformacija();
             DajPodatkeORacunima();
 
             _watcher.SynchronizingObject = this;
@@ -130,22 +128,6 @@ namespace COMP_FISK
             dgvRacuniDataView.Columns[1].Width = 75;
         }
 
-        private void InicijalizacijaInformacija()
-        {
-            if (printerInformacije.Count != 0)
-            {
-                lblFactoryIdVar.Text = printerInformacije[0].ToString();
-                lblTipPrinteraVar.Text = printerInformacije[1].ToString();
-                lblIBFMVar.Text = printerInformacije[2].ToString();
-                lblJIBVar.Text = printerInformacije[3].ToString();
-                lblBrojIzvjestajaVar.Text = printerInformacije[4].ToString();
-                DnevniIzvjestajiProvjera();
-                pnServisPozadina.Popup();
-            }
-            else
-                pnFiskalniNijeSpojen.Popup();
-        }
-
         private void closeBox_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -200,13 +182,6 @@ namespace COMP_FISK
         {
             var noviPeriodicniIzvjestajProzor = new PeriodicniWindowView();
             noviPeriodicniIzvjestajProzor.Show();
-        }
-
-        private async void restartTringServeraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            await RestartTringServerController.RestartServisa();
-
-            pnRestartTringServisa.Popup();
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
