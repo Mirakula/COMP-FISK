@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COMP_FISK
@@ -24,11 +25,22 @@ namespace COMP_FISK
         {
             InitializeComponent();
             StartMinimizirano();
+            ProvjeriKonekcijuFiskalni();
             DajPodatkeORacunima();
 
             _watcher.SynchronizingObject = this;
             _watcher.EnableRaisingEvents = true;
             _watcher.Created += dbfWatcher_Created;
+        }
+
+        private void ProvjeriKonekcijuFiskalni()
+        {
+            var spojen = Task.Run(async () => await FiskalniPrinterController.StatusPrintera());
+
+            if (spojen.Result)
+                pnFiskalniSpojen.Popup();
+            else
+                pnFiskalniNijeSpojen.Popup();
         }
 
         private bool DnevniIzvjestajiProvjera()
