@@ -25,6 +25,7 @@ namespace COMP_FISK
         {
             InitializeComponent();
             StartMinimizirano();
+            Task.Run(async () => await DnevniIzvjestajiProvjera()).Wait();
             ProvjeriKonekcijuFiskalni();
             DajPodatkeORacunima();
 
@@ -72,16 +73,34 @@ namespace COMP_FISK
             }
         }
 
-        private async void dbfWatcher_Created(object sender, FileSystemEventArgs e)
+        private void dbfWatcher_Created(object sender, FileSystemEventArgs e)
+        {
+            var result = Task.Run(async () => await NoviFajl(sender, e));
+            result.Wait();
+
+            string OperationResult = result.Result;
+            if (char.IsNumber(OperationResult[0]))
+            {
+                pnFiskalniOK.ContentText = "Broj računa: " + result.Result;
+                pnFiskalniOK.Popup();
+            }
+            else
+            {
+                pnFiskalniERR.ContentText = result.Result;
+                pnFiskalniERR.Popup();
+            }
+        }
+
+        private async Task<string> NoviFajl(object sender, FileSystemEventArgs e)
         {
             // Dobavi samo dbf fajlove iz TO_FP
             DirectoryInfo directory = new DirectoryInfo(@"C:\fiskcomp\exch\lnk\TO_FP");
             FileInfo[] fileInfo = directory.GetFiles();
-            
+
             foreach (FileInfo dbfRacun in fileInfo)
             {
                 if (Path.GetExtension(dbfRacun.Name) == ".xxx")
-                    Thread.Sleep(200);
+                    Thread.Sleep(300);
             }
 
             DirectoryInfo directoryWaited = new DirectoryInfo(@"C:\fiskcomp\exch\lnk\TO_FP");
@@ -100,14 +119,14 @@ namespace COMP_FISK
                     if (rezultatFiskalizacije)
                     {
                         RacuniController.UpisiOdgovorOK(brojRacuna, dbfRacun.Name);
-                        pnFiskalniOK.ContentText = "Broj računa: " + brojRacuna;
-                        pnFiskalniOK.Popup();
+                        var brjrac = brojRacuna;
+                        return await Task.FromResult(brjrac);
                     }
                     else
                     {
                         RacuniController.UpisiOdgovorERR(brojRacuna, dbfRacun.Name);
-                        pnFiskalniERR.ContentText = "Greška: " + brojRacuna;
-                        pnFiskalniERR.Popup();
+                        var greska = "Greška: " + brojRacuna;
+                        return await Task.FromResult(greska);
                     }
                 }
                 else
@@ -118,6 +137,7 @@ namespace COMP_FISK
                     break;
                 }
             }
+            return null;
         }
 
         private void StartMinimizirano()
@@ -133,6 +153,7 @@ namespace COMP_FISK
             var podaci = stampaniPodaci.DajSvePodatke(@"C:\fiskcomp\exch\lnk\FROM_FP");
             var source = new BindingSource(podaci, null);
             dgvRacuniDataView.DataSource = source;
+            dgvRacuniDataView.RowHeadersVisible = false;
             dgvRacuniDataView.RowTemplate.Height = 35;
             dgvRacuniDataView.DefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
         }
