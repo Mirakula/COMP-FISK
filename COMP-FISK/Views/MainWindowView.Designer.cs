@@ -174,7 +174,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.label1.Location = new System.Drawing.Point(10, 171);
+            this.label1.Location = new System.Drawing.Point(10, 178);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 14);
             this.label1.TabIndex = 5;
@@ -183,7 +183,7 @@
             // logoBox
             // 
             this.logoBox.Image = ((System.Drawing.Image)(resources.GetObject("logoBox.Image")));
-            this.logoBox.Location = new System.Drawing.Point(19, 111);
+            this.logoBox.Location = new System.Drawing.Point(19, 118);
             this.logoBox.Name = "logoBox";
             this.logoBox.Size = new System.Drawing.Size(63, 57);
             this.logoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -350,7 +350,7 @@
             this.pnDnevniIzvjestaj.ContentColor = System.Drawing.Color.White;
             this.pnDnevniIzvjestaj.ContentFont = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnDnevniIzvjestaj.ContentHoverColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnDnevniIzvjestaj.ContentPadding = new System.Windows.Forms.Padding(35, 10, 0, 0);
+            this.pnDnevniIzvjestaj.ContentPadding = new System.Windows.Forms.Padding(35, 20, 0, 0);
             this.pnDnevniIzvjestaj.ContentText = "Dnevni izvještaj isprintan !";
             this.pnDnevniIzvjestaj.Delay = 4000;
             this.pnDnevniIzvjestaj.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
@@ -360,7 +360,7 @@
             this.pnDnevniIzvjestaj.IsRightToLeft = false;
             this.pnDnevniIzvjestaj.OptionsMenu = null;
             this.pnDnevniIzvjestaj.ShowGrip = false;
-            this.pnDnevniIzvjestaj.Size = new System.Drawing.Size(300, 100);
+            this.pnDnevniIzvjestaj.Size = new System.Drawing.Size(330, 100);
             this.pnDnevniIzvjestaj.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.pnDnevniIzvjestaj.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
             this.pnDnevniIzvjestaj.TitleText = "";
