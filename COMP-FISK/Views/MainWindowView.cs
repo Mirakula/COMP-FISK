@@ -204,9 +204,11 @@ namespace COMP_FISK
             this.WindowState = FormWindowState.Normal;
         }
 
-        private void skenerOnOffToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void skenerOnOffToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (DnevniIzvjestajiProvjera())
+            var result = await DnevniIzvjestajiProvjera();
+            
+            if (result)
             {
                 if (_watcher.EnableRaisingEvents == true)
                 {
