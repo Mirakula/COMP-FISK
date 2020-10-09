@@ -135,9 +135,17 @@ namespace COMP_FISK
             dgvRacuniDataView.DataSource = source;
             dgvRacuniDataView.RowTemplate.Height = 35;
             dgvRacuniDataView.DefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
-            dgvRacuniDataView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            dgvRacuniDataView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvRacuniDataView.Columns[1].Width = 75;
+            //dgvRacuniDataView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            //dgvRacuniDataView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dgvRacuniDataView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dgvRacuniDataView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dgvRacuniDataView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dgvRacuniDataView.Anchor = AnchorStyles.Top;
+            //dgvRacuniDataView.Anchor = AnchorStyles.Left;
+            //dgvRacuniDataView.Anchor = AnchorStyles.Right;
+            //dgvRacuniDataView.Dock = DockStyle.Fill;
+
+            //dgvRacuniDataView.Columns[1].Width = 75;
         }
 
         private void closeBox_Click(object sender, EventArgs e)

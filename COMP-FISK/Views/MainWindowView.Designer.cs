@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ContextMenuStrip contextMenu;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowView));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prikaziProzorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provjeriStatusPrinteraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dnevniIzvještajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,12 +53,12 @@
             this.pnDnevniIzvjestaj = new Tulpep.NotificationWindow.PopupNotifier();
             this.pnPresjekStanja = new Tulpep.NotificationWindow.PopupNotifier();
             this.pnServisPozadina = new Tulpep.NotificationWindow.PopupNotifier();
-            this.dgvRacuniDataView = new System.Windows.Forms.DataGridView();
             this.pnRestartTringServisa = new Tulpep.NotificationWindow.PopupNotifier();
             this.pnDnevniIzvjestajiLimit = new Tulpep.NotificationWindow.PopupNotifier();
             this.pnSkener = new Tulpep.NotificationWindow.PopupNotifier();
             this.pnDnevniIzvjestajiBlok = new Tulpep.NotificationWindow.PopupNotifier();
             this.restartTringServeraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvRacuniDataView = new System.Windows.Forms.DataGridView();
             contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             contextMenu.SuspendLayout();
             this.leftPnl.SuspendLayout();
@@ -85,7 +83,7 @@
             this.skenerOnOffToolStripMenuItem,
             this.zatvoriAplikacijuToolStripMenuItem});
             contextMenu.Name = "contextMenuStrip1";
-            contextMenu.Size = new System.Drawing.Size(271, 200);
+            contextMenu.Size = new System.Drawing.Size(224, 186);
             // 
             // prikaziProzorToolStripMenuItem
             // 
@@ -93,7 +91,7 @@
             this.prikaziProzorToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.prikaziProzorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("prikaziProzorToolStripMenuItem.Image")));
             this.prikaziProzorToolStripMenuItem.Name = "prikaziProzorToolStripMenuItem";
-            this.prikaziProzorToolStripMenuItem.Size = new System.Drawing.Size(270, 28);
+            this.prikaziProzorToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.prikaziProzorToolStripMenuItem.Text = "Prikaži prozor";
             this.prikaziProzorToolStripMenuItem.Click += new System.EventHandler(this.prikaziProzorToolStripMenuItem_Click);
             // 
@@ -103,7 +101,7 @@
             this.provjeriStatusPrinteraToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.provjeriStatusPrinteraToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("provjeriStatusPrinteraToolStripMenuItem.Image")));
             this.provjeriStatusPrinteraToolStripMenuItem.Name = "provjeriStatusPrinteraToolStripMenuItem";
-            this.provjeriStatusPrinteraToolStripMenuItem.Size = new System.Drawing.Size(270, 28);
+            this.provjeriStatusPrinteraToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.provjeriStatusPrinteraToolStripMenuItem.Text = "Provjeri status printera";
             this.provjeriStatusPrinteraToolStripMenuItem.Click += new System.EventHandler(this.provjeriStatusPrinteraToolStripMenuItem_Click);
             // 
@@ -113,7 +111,7 @@
             this.dnevniIzvještajToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.dnevniIzvještajToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("dnevniIzvještajToolStripMenuItem.Image")));
             this.dnevniIzvještajToolStripMenuItem.Name = "dnevniIzvještajToolStripMenuItem";
-            this.dnevniIzvještajToolStripMenuItem.Size = new System.Drawing.Size(270, 28);
+            this.dnevniIzvještajToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.dnevniIzvještajToolStripMenuItem.Text = "Dnevni izvještaj";
             this.dnevniIzvještajToolStripMenuItem.Click += new System.EventHandler(this.dnevniIzvještajToolStripMenuItem_Click);
             // 
@@ -123,7 +121,7 @@
             this.periodičniIzvještajToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.periodičniIzvještajToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("periodičniIzvještajToolStripMenuItem.Image")));
             this.periodičniIzvještajToolStripMenuItem.Name = "periodičniIzvještajToolStripMenuItem";
-            this.periodičniIzvještajToolStripMenuItem.Size = new System.Drawing.Size(270, 28);
+            this.periodičniIzvještajToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.periodičniIzvještajToolStripMenuItem.Text = "Periodični izvještaj";
             this.periodičniIzvještajToolStripMenuItem.Click += new System.EventHandler(this.periodičniIzvještajToolStripMenuItem_Click);
             // 
@@ -133,7 +131,7 @@
             this.presjekStanjaToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.presjekStanjaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("presjekStanjaToolStripMenuItem.Image")));
             this.presjekStanjaToolStripMenuItem.Name = "presjekStanjaToolStripMenuItem";
-            this.presjekStanjaToolStripMenuItem.Size = new System.Drawing.Size(270, 28);
+            this.presjekStanjaToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.presjekStanjaToolStripMenuItem.Text = "Presjek stanja";
             this.presjekStanjaToolStripMenuItem.Click += new System.EventHandler(this.presjekStanjaToolStripMenuItem_Click);
             // 
@@ -143,7 +141,7 @@
             this.skenerOnOffToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.skenerOnOffToolStripMenuItem.Image = global::COMP_FISK.Properties.Resources.scanner;
             this.skenerOnOffToolStripMenuItem.Name = "skenerOnOffToolStripMenuItem";
-            this.skenerOnOffToolStripMenuItem.Size = new System.Drawing.Size(270, 28);
+            this.skenerOnOffToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.skenerOnOffToolStripMenuItem.Text = "Skener On/Off";
             this.skenerOnOffToolStripMenuItem.Click += new System.EventHandler(this.skenerOnOffToolStripMenuItem_Click);
             // 
@@ -153,7 +151,7 @@
             this.zatvoriAplikacijuToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.zatvoriAplikacijuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zatvoriAplikacijuToolStripMenuItem.Image")));
             this.zatvoriAplikacijuToolStripMenuItem.Name = "zatvoriAplikacijuToolStripMenuItem";
-            this.zatvoriAplikacijuToolStripMenuItem.Size = new System.Drawing.Size(270, 28);
+            this.zatvoriAplikacijuToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.zatvoriAplikacijuToolStripMenuItem.Text = "Zatvori aplikaciju";
             this.zatvoriAplikacijuToolStripMenuItem.Click += new System.EventHandler(this.zatvoriAplikacijuToolStripMenuItem_Click);
             // 
@@ -165,9 +163,8 @@
             this.leftPnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPnl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leftPnl.Location = new System.Drawing.Point(0, 0);
-            this.leftPnl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.leftPnl.Name = "leftPnl";
-            this.leftPnl.Size = new System.Drawing.Size(141, 394);
+            this.leftPnl.Size = new System.Drawing.Size(106, 320);
             this.leftPnl.TabIndex = 0;
             // 
             // label1
@@ -177,20 +174,18 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.label1.Location = new System.Drawing.Point(14, 211);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(10, 171);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 18);
+            this.label1.Size = new System.Drawing.Size(88, 14);
             this.label1.TabIndex = 5;
             this.label1.Text = "COMP - 2000";
             // 
             // logoBox
             // 
             this.logoBox.Image = ((System.Drawing.Image)(resources.GetObject("logoBox.Image")));
-            this.logoBox.Location = new System.Drawing.Point(25, 137);
-            this.logoBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logoBox.Location = new System.Drawing.Point(19, 111);
             this.logoBox.Name = "logoBox";
-            this.logoBox.Size = new System.Drawing.Size(84, 70);
+            this.logoBox.Size = new System.Drawing.Size(63, 57);
             this.logoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logoBox.TabIndex = 0;
             this.logoBox.TabStop = false;
@@ -202,19 +197,17 @@
             this.topPnl.Controls.Add(this.closeBox);
             this.topPnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPnl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.topPnl.Location = new System.Drawing.Point(141, 0);
-            this.topPnl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.topPnl.Location = new System.Drawing.Point(106, 0);
             this.topPnl.Name = "topPnl";
-            this.topPnl.Size = new System.Drawing.Size(619, 25);
+            this.topPnl.Size = new System.Drawing.Size(464, 20);
             this.topPnl.TabIndex = 1;
             // 
             // minimizeBox
             // 
             this.minimizeBox.Image = ((System.Drawing.Image)(resources.GetObject("minimizeBox.Image")));
-            this.minimizeBox.Location = new System.Drawing.Point(569, 3);
-            this.minimizeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimizeBox.Location = new System.Drawing.Point(427, 2);
             this.minimizeBox.Name = "minimizeBox";
-            this.minimizeBox.Size = new System.Drawing.Size(20, 18);
+            this.minimizeBox.Size = new System.Drawing.Size(15, 15);
             this.minimizeBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.minimizeBox.TabIndex = 2;
             this.minimizeBox.TabStop = false;
@@ -223,10 +216,9 @@
             // closeBox
             // 
             this.closeBox.Image = ((System.Drawing.Image)(resources.GetObject("closeBox.Image")));
-            this.closeBox.Location = new System.Drawing.Point(595, 3);
-            this.closeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeBox.Location = new System.Drawing.Point(446, 2);
             this.closeBox.Name = "closeBox";
-            this.closeBox.Size = new System.Drawing.Size(20, 18);
+            this.closeBox.Size = new System.Drawing.Size(15, 15);
             this.closeBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.closeBox.TabIndex = 0;
             this.closeBox.TabStop = false;
@@ -417,43 +409,6 @@
             this.pnServisPozadina.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
             this.pnServisPozadina.TitleText = "";
             // 
-            // dgvRacuniDataView
-            // 
-            this.dgvRacuniDataView.AllowUserToAddRows = false;
-            this.dgvRacuniDataView.AllowUserToDeleteRows = false;
-            this.dgvRacuniDataView.AllowUserToOrderColumns = true;
-            this.dgvRacuniDataView.AllowUserToResizeColumns = false;
-            this.dgvRacuniDataView.AllowUserToResizeRows = false;
-            this.dgvRacuniDataView.BackgroundColor = System.Drawing.Color.White;
-            this.dgvRacuniDataView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvRacuniDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRacuniDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvRacuniDataView.ColumnHeadersHeight = 29;
-            this.dgvRacuniDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvRacuniDataView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvRacuniDataView.EnableHeadersVisualStyles = false;
-            this.dgvRacuniDataView.GridColor = System.Drawing.Color.White;
-            this.dgvRacuniDataView.Location = new System.Drawing.Point(141, 25);
-            this.dgvRacuniDataView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvRacuniDataView.Name = "dgvRacuniDataView";
-            this.dgvRacuniDataView.ReadOnly = true;
-            this.dgvRacuniDataView.RowHeadersVisible = false;
-            this.dgvRacuniDataView.RowHeadersWidth = 51;
-            this.dgvRacuniDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.dgvRacuniDataView.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvRacuniDataView.RowTemplate.Height = 24;
-            this.dgvRacuniDataView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvRacuniDataView.Size = new System.Drawing.Size(619, 369);
-            this.dgvRacuniDataView.TabIndex = 3;
-            // 
             // pnRestartTringServisa
             // 
             this.pnRestartTringServisa.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
@@ -554,18 +509,30 @@
             this.restartTringServeraToolStripMenuItem.Size = new System.Drawing.Size(270, 28);
             this.restartTringServeraToolStripMenuItem.Text = "Restart tring servera";
             // 
+            // dgvRacuniDataView
+            // 
+            this.dgvRacuniDataView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvRacuniDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvRacuniDataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvRacuniDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRacuniDataView.Location = new System.Drawing.Point(106, 20);
+            this.dgvRacuniDataView.Name = "dgvRacuniDataView";
+            this.dgvRacuniDataView.Size = new System.Drawing.Size(464, 300);
+            this.dgvRacuniDataView.TabIndex = 2;
+            // 
             // MainWindowView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(760, 394);
+            this.ClientSize = new System.Drawing.Size(570, 320);
             this.Controls.Add(this.dgvRacuniDataView);
             this.Controls.Add(this.topPnl);
             this.Controls.Add(this.leftPnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "MainWindowView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -605,13 +572,13 @@
         private Tulpep.NotificationWindow.PopupNotifier pnDnevniIzvjestaj;
         private Tulpep.NotificationWindow.PopupNotifier pnPresjekStanja;
         private Tulpep.NotificationWindow.PopupNotifier pnServisPozadina;
-        private System.Windows.Forms.DataGridView dgvRacuniDataView;
         private Tulpep.NotificationWindow.PopupNotifier pnRestartTringServisa;
         private Tulpep.NotificationWindow.PopupNotifier pnDnevniIzvjestajiLimit;
         private System.Windows.Forms.ToolStripMenuItem skenerOnOffToolStripMenuItem;
         private Tulpep.NotificationWindow.PopupNotifier pnSkener;
         private Tulpep.NotificationWindow.PopupNotifier pnDnevniIzvjestajiBlok;
         private System.Windows.Forms.ToolStripMenuItem restartTringServeraToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dgvRacuniDataView;
     }
 }
 
