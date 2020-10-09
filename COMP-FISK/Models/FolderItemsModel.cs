@@ -9,7 +9,7 @@ namespace COMP_FISK.Models
     public class FolderItemsModel
     {
         public string Racun { get; set; }
-        public string BR { get; set; }
+        public string Broj { get; set; }
         public DateTime Vrijeme { get; set; }
         public string Status { get; set; }
     }

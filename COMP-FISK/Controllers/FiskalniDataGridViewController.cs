@@ -21,7 +21,7 @@ namespace COMP_FISK.Controllers
                 var podaci = new FolderItemsModel
                 {
                     Racun = item.Name.Trim(),
-                    BR = File.ReadAllText(item.FullName.Trim()),
+                    Broj = File.ReadAllText(item.FullName.Trim()),
                     Vrijeme = item.LastWriteTime.ToUniversalTime(),
                     Status = item.Extension.Trim(),
                 };
