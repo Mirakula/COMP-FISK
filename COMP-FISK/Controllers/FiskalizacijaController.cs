@@ -74,7 +74,7 @@ namespace COMP_FISK.Controllers
 
             _racun.Napomena = (from obj in data
                                where obj.Art_id.StartsWith("NAPOMENA")
-                               select obj).First<RedDbfModel>().Art_desc;
+                               select obj).First<RedDbfModel>().Art_desc.Trim();
 
 
             if (_vrstaRacuna == '1')
@@ -165,8 +165,8 @@ namespace COMP_FISK.Controllers
                 else
                 {
                     _kupac.IDbroj = Convert.ToDouble(podaciKupac[0].Art_desc);
-                    _kupac.Naziv = podaciKupac[1].Art_desc;
-                    _kupac.Adresa = podaciKupac[2].Art_desc;
+                    _kupac.Naziv = podaciKupac[1].Art_desc.Trim();
+                    _kupac.Adresa = podaciKupac[2].Art_desc.Trim();
                     try
                     {
                         _kupac.PostanskiBroj = Convert.ToInt32(podaciKupac[3].Art_desc);
@@ -175,7 +175,7 @@ namespace COMP_FISK.Controllers
                     {
                         _kupac.PostanskiBroj = 0;
                     }
-                    _kupac.Grad = podaciKupac[4].Art_desc;
+                    _kupac.Grad = podaciKupac[4].Art_desc.Trim();
 
                     _racun.Kupac = _kupac;
                 }
