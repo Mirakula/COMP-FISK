@@ -72,9 +72,11 @@ namespace COMP_FISK.Controllers
                               where obj.Art_id.StartsWith("PAY") && !(obj.Art_price == 0.0)
                               select obj).ToList<RedDbfModel>();
 
+
+            // "\n" je za novi red na fiskalnom racunu
             _racun.Napomena = (from obj in data
                                where obj.Art_id.StartsWith("NAPOMENA")
-                               select obj).First<RedDbfModel>().Art_desc.Trim();
+                               select obj).First<RedDbfModel>().Art_desc.Trim() + "\n";
 
 
             if (_vrstaRacuna == '1')
